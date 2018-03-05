@@ -1,0 +1,5 @@
+lib/
+dist/app.js
+dist/css
+.DS_Store
+dist/*
