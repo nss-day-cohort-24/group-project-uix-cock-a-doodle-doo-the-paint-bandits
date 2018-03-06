@@ -1,7 +1,8 @@
 "use strict";
 var url = `https://api.meetup.com/find/groups?zip=11211&radius=1&category=25&order=members`;
-
+let $ = require('jquery');
 let meetups;
+
 function getMeetup() {
     return $.ajax({
       url: url
@@ -11,4 +12,3 @@ function getMeetup() {
       return  ;
     });
    }
-   
