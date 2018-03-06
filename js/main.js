@@ -6,7 +6,7 @@ let mine= require("./books");
 
 locate.testMe();
 fetchweather.testMe();
-
+locate.setCity();
 
 
 console.log("hello");
