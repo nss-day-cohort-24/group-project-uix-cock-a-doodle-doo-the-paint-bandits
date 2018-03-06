@@ -5,3 +5,4 @@ dist/app.js
 dist/css
 .DS_Store
 dist/*
+js/fb-key-rb.js
