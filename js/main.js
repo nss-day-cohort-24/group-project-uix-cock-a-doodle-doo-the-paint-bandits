@@ -2,7 +2,7 @@
 console.log("hello");
 let getter= require("./fetch");
 let mine= require("./books");
-
+let news= require("./news");
 
 function testing(result) {
 result= getter.test();
@@ -14,3 +14,4 @@ function testing2(result) {
     return result;
     }
 testing2();
+news.getNews();
