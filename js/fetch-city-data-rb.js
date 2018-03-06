@@ -8,7 +8,7 @@ function fetchCity(city){
 
         let cityLoader = new XMLHttpRequest();
 
-        cityLoader.open("GET", `https://api.meetup.com${key.keyMeet.specifier}?${key.keyMeet.apiKey}&sign=true&country=UnitedStates&state=Tennessee`);
+        cityLoader.open("GET", `https://api.meetup.com${key.keyMeet.specifier}?key=${key.keyMeet.apiKey}&sign=true&country=UnitedStates&state=Tennessee.json`, true);
         cityLoader.send();
 
         cityLoader.addEventListener("load", function() {
