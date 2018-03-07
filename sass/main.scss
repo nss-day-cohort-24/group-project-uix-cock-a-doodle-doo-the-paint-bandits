@@ -1,9 +1,37 @@
+// MAIN STYLE COLORS //
+$red: #C63D0F;
+$black: #3B3738;
+$white: #FDF3E7;
+$olive: #7E8F7C;
+$orange: #EB7118;
+$grey: #DDCEC4;
+$green: #7EAB93;
+
+// CARD COLORS (TRANSPARENCY)
+$red-t: rgba(198, 61, 15, .7);
+$black-t: rgba(59, 55, 56, .7);
+$white-t: rgba(253, 243, 231, .7);
+$olive-t: rgba(126, 143, 124, .7);
+$orange-t: rgba(235, 113, 24, .7);
+$grey-t: rgba(221, 206, 196, .7);
+$green-t: rgba(126, 171, 147, .7);
+
 html, body {
 height: 100%;
 width: 100%;
 margin:0px;
 padding:0px;
 color: black;
+}
+
+#displayMeetups, ul{
+    text-align: center;
+    padding: 1em;
+    color: white;
+}
+
+ul li {
+    list-style: none;
 }
 
 .card-title1 {
@@ -37,8 +65,7 @@ color: black;
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: orange;
-    opacity: 0.7;
+    background-color: rgba(50, 90, 54, 0.7);
     border: 3px solid black;
 }
 
