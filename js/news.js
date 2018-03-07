@@ -1,7 +1,5 @@
 "use strict";
 
-var url = 'https://newsapi.org/v2/top-headlines?' +
-
 var $ = require('../lib/node_modules/jquery');
 
 let url = 'https://newsapi.org/v2/top-headlines?' +
