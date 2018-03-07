@@ -1,13 +1,8 @@
 "use strict";
-<<<<<<< HEAD
-var $ = require('jquery');
-var url = 'https://newsapi.org/v2/top-headlines?' +
-=======
 
 var $ = require('jquery');
 
 let url = 'https://newsapi.org/v2/top-headlines?' +
->>>>>>> 9d7be4db65ee87ac0c2da20a3791c40f45285c28
           'country=us&' +
           'apiKey=5afaf2800c8b46329fbfd648e0c02b14';
 var newsArticles;
