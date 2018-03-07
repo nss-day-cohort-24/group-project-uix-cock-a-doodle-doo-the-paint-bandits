@@ -5,25 +5,13 @@ let getter= require("./fetch");
 let mine= require("./books");
 let news= require("./news");
 let meetup= require("./meetup");
-
+// CONSOLE TESTS
 locate.testMe();
 fetchweather.testMe();
+
+
+
+// RUNNING CODE
 locate.setCity();
-
-
-console.log("hello");
-
-
-function testing(result) {
-result= getter.test();
-return result;
-}
-testing();
-function testing2(result) {
-    result= mine.shit();
-    return result;
-    }
-testing2();
-
 news.getNews();
 news.listNews();

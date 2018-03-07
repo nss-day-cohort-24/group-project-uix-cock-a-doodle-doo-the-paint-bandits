@@ -3,7 +3,7 @@
 let city = require("./fetch-city-data-rb");
 let db = require("./fb-db-rb.js");
 let localTown = "Nashville";
-
+let location;
 let returnedQuery;
 function testMe(){
 
@@ -23,17 +23,22 @@ function setCity(){
 
 
     ).then(
-        (location)=>{
-
+        (loc)=>{
+            location = loc;
             db.connectionTest();
             
-            db.addUserLocation(location);
+            db.addUserLocation(loc);
         }
 
     );
 }
 
+function setWeather(){
 
+
+
+    
+}
 
 
 
