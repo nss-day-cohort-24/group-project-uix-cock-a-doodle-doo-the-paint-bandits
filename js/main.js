@@ -27,3 +27,4 @@ testing2();
 
 news.getNews();
 news.listNews();
+news.printNews();
