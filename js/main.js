@@ -26,3 +26,4 @@ function testing2(result) {
 testing2();
 
 news.getNews();
+news.listNews();
