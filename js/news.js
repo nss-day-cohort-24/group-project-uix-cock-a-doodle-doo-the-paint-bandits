@@ -1,12 +1,7 @@
 "use strict";
 
-<<<<<<< HEAD
-var url = 'https://newsapi.org/v2/top-headlines?';
-
-var $ = require('../lib/node_modules/jquery');
-=======
 var $ = require('jquery');
->>>>>>> 60eaf322c0db5afa7097af88330b93ea84aafcf5
+
 
 let url = 'https://newsapi.org/v2/top-headlines?' +
           'country=us&' +
