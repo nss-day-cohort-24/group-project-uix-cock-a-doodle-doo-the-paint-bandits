@@ -1,16 +1,20 @@
 "use strict";
-let key = require ("./weather-api-key-rb.js")
+let key = require ("./weather-api-key-rb.js");
+
+let lat = "36.16999816894531";
+let lon = "-86.77999877929688";
+
 function testMe(){
     console.log("Fired module of weather-fetch-rb.js");
 }
 
-function fetchWeather(city){
+function fetchWeather(){
 
     return new Promise((resolve, reject ) =>{
 
         let weatherLoader = new XMLHttpRequest();
-
-        weatherLoader.open("GET", `https://${key.keyWeather.AuthDomain}lat={lat}&lon={lon}${key.keyWeather.specifier}`, true);
+        //api.openweathermap.org/data/2.5/weather?lat=35&lon=139
+        weatherLoader.open("GET", `https://${key.keyWeather.authDomain}${key.keyWeather.specifier}${key.keyWeather.APPID}&lat=${lat}&lon=${lon}`, true);
         weatherLoader.send();
 
         weatherLoader.addEventListener("load", function(){
@@ -35,4 +39,4 @@ function fetchWeather(city){
 
 
 
-module.exports = {testMe};
+module.exports = {testMe, fetchWeather};

@@ -1,5 +1,5 @@
 "use strict";
-let fetchweather = require( "./weather-fetch-rb");
+let fetchweather = require( "./fetch-weather-rb");
 let locate = require( "./location-set-rb");
 let getter= require("./fetch");
 let mine= require("./books");
@@ -13,5 +13,6 @@ fetchweather.testMe();
 
 // RUNNING CODE
 locate.setCity();
+locate.setWeather();
 news.getNews();
 news.listNews();

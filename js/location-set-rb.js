@@ -2,9 +2,10 @@
 
 let city = require("./fetch-city-data-rb");
 let db = require("./fb-db-rb.js");
+let weather = require("./fetch-weather-rb.js");
 let localTown = "Nashville";
-let location;
-let returnedQuery;
+var location;
+let returnedQuery, returnedQueryWeather;
 function testMe(){
 
     console.log("Fired module of location-set-rb.js");
@@ -35,12 +36,18 @@ function setCity(){
 
 function setWeather(){
 
+    weather.fetchWeather().then(
+        (resolve)=>{
+            returnedQueryWeather = resolve;
+            console.log("Weather: ", returnedQueryWeather);
+
+        }
+    );
 
 
-    
 }
 
 
 
 
-module.exports = {testMe, setCity};
+module.exports = {testMe, setCity, setWeather};
