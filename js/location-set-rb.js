@@ -3,7 +3,9 @@
 let city = require("./fetch-city-data-rb");
 let db = require("./fb-db-rb.js");
 let weather = require("./fetch-weather-rb.js");
-let localTown = "Nashville";
+
+// This should be replaced to sync up with the DOM -- //
+let localTown = "Nashville"; 
 var location;
 let returnedQuery, returnedQueryWeather;
 function testMe(){
@@ -18,20 +20,13 @@ function setCity(){
         (resolve) => {
             returnedQuery = resolve.results[0];
             console.log(returnedQuery);
-            return returnedQuery;
-            
-        }
-
-
-    ).then(
+            return returnedQuery; 
+        }).then(
         (loc)=>{
             location = loc;
             db.connectionTest();
-            
             db.addUserLocation(loc);
-        }
-
-    );
+        });
 }
 
 function setWeather(){
