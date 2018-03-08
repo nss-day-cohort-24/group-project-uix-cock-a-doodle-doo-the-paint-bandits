@@ -3,14 +3,14 @@ let $ = require("jquery");
 
 // STUFF FROM BOOKS-SEARCH
 let apiURL;
-let bookSubmitButton = document.getElementById("form-submit");
+let bookSubmitButton = $("#form-submit");
 let titleField = $("#book-title");
 let authorField = $("#author-name");
 let yearPubField = $("#publish-year");
 let bookForm = $("book-form");
 
 // FETCH OBJECTS FOR BOOKS
-bookSubmitButton.click(userInputToURL(event));
+// bookSubmitButton.click(userInputToURL(event));
 
 // FETCH OBJECTS FOR CITY
 let keyCity = require ("./meeting-api-key-rb.js");
@@ -70,60 +70,63 @@ function fetchWeather(){
     });
 }
 
-function userInputToURL (string) {
-	
-	let bookTitleSearch = $("#book-title").val();
-	console.log("book title", bookTitleSearch);
+// BOOKS WILL BE STARTING HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	let authorSearch = $("#author-name").val();
-	console.log("authorSearch", authorSearch);
+let searchBook = document.getElementById("searchBook"),
+    outputBook = document.getElementById("outputBook");
+searchBook.addEventListener("keydown", searchingBk);
 
-	let yearPublishedSearch = $("#publish-year").val();
-	console.log("yearPublishedSearch", yearPublishedSearch);
+function searchingBk(event) {
+    if (event.which === 13 || event.keyCode === 13) {
+
+        // makes input into: this+is+input
+        let theSplit = searchBook.value.replace(/ /g, "+");
+        dataBook(theSplit).then(
+            (resolve) => {
+                printBkSearch(resolve);
+            },
+            (reject) => {
+                console.log("didn't load");
+            }
+        );
+    }
 }
 
-function grabBookData(userBookInput) {
-   
-	return $.ajax({
-		url: `https://openlibrary.org/search.json?q=${userBookInput}`,
+let dataBook = (input) => {
+    return new Promise((resolve, reject) => {
+        var bookBase = `http://openlibrary.org/search.json?q=${input}&limit=10`;
 
-	}).done(() => {
+        let request = new XMLHttpRequest();
 
-		return ;
-   });
-}
+        request.onload = function () {
+            if (request.status === 200) {
+                let data = JSON.parse(request.responseText);
+                resolve(data);
+            }
+        };
+        request.open("GET", bookBase);
+        request.send();
+    });
+};
 
+let printBkSearch = (resolve) => {
+    outputBook.innerHTML = "";
 
-function userInputToURL(element, apiURL) {
-    let titleQuery = titleField.val();
-    console.log(titleQuery);
+    for (let item in resolve.docs) {
+        let fullItem = resolve.docs[item];
 
-    apiURL = `http://openlibrary.org/search.json?q=${titleQuery}`;
-    
-    console.log(apiURL);
-}
-            
+        let itemList = {
+            sub: fullItem.subtitle ? `: ${fullItem.subtitle}` : "",
+            author: fullItem.author_name ? `${fullItem.author_name}` : "Unknown",
+            uStatus: fullItem.author_name ? "" : "uknown",
+            pubDate: fullItem.first_publish_year ? `- first published in ${fullItem.first_publish_year}` : "",
+        };
 
-
-titleField.focusout(userInputToURL(apiURL));
-authorField.focusout(userInputToURL(apiURL));
-yearPubField.focusout(userInputToURL(apiURL));
-bookSubmitButton.addEventListener = (click) => {
-            console.log("The submit button has been clicked.");
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = {testMe, fetchWeather, fetchCity, grabBookData, userInputToURL, bookSubmitButton};
+        outputBook.innerHTML +=
+            `<div class="book-printed">
+        <h1>${fullItem.title}${itemList.sub}</h1>
+        <h2 class=${itemList.uStatus}>by ${itemList.author}</h2>
+        <p>${itemList.pubDate}</p>
+        </div>`;
+    }
+};
