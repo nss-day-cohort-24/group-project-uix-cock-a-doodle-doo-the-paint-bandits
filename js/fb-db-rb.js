@@ -8,21 +8,23 @@ let connectionTest = () => {
 };
 
 
- let addUserLocation = (location) => {
-    console.log("addUserLocation", location);
+ let addUserLocation;
+ 
+//  (location) => {
+//     console.log("addUserLocation", location);
     
-    return $.ajax({
-        url: `${firebase.getFBsettings().databaseURL}/location.json`,
-        type: 'POST',
-        data: JSON.stringify(location),
-        dataType: 'json'
-    }).done((UserLocationID) => {
-        console.log("This is the key", UserLocationID);
-        return UserLocationID;
-    });
+//     return $.ajax({
+//         url: `${firebase.getFBsettings().databaseURL}/location.json`,
+//         type: 'POST',
+//         data: JSON.stringify(location),
+//         dataType: 'json'
+//     }).done((UserLocationID) => {
+//         console.log("This is the key", UserLocationID);
+//         return UserLocationID;
+//     });
     
 
-};
+// };
 
 
 

@@ -1,6 +1,6 @@
 "use strict";
 let fetchall = require( "./fetch-all.js"),
-    locate = require( "./location-set-rb"),
+    locate = require( "./initialize.js"),
     
     mine= require("./books"),
     news= require("./news"),
