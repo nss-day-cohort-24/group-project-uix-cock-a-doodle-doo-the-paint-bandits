@@ -34,6 +34,6 @@ $("#goog-login").click(function() {
 
 
 // RUNNING CODE
-news.getNews();
-news.listNews();
-news.printNews();
+//news.getNews();
+// news.listNews();
+// news.printNews();
