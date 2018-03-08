@@ -44,7 +44,4 @@ function setWeather(){
 
 }
 
-
-
-
-module.exports = {testMe, setCity, setWeather};
+module.exports = { testMe, setCity, setWeather };
