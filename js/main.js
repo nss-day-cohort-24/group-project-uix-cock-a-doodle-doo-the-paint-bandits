@@ -1,8 +1,6 @@
 "use strict";
 let fetchall = require( "./fetch-all.js"),
     locate = require( "./initialize.js"),
-    
-    mine= require("./books"),
     news= require("./news"),
     meetup= require("./meetup");
 

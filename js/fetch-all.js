@@ -10,7 +10,7 @@ let yearPubField = $("#publish-year");
 let bookForm = $("book-form");
 
 // FETCH OBJECTS FOR BOOKS
-bookSubmitButton.click(userInputToURL(event));
+// bookSubmitButton.click(userInputToURL(event));
 
 // FETCH OBJECTS FOR CITY
 let keyCity = require ("./meeting-api-key-rb.js");
@@ -70,47 +70,125 @@ function fetchWeather(){
     });
 }
 
-function userInputToURL (string) {
+// BOOKS WILL BE STARTING HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let searchBook = document.getElementById("searchBook"),
+    outputBook = document.getElementById("outputBook");
+searchBook.addEventListener("keydown", searchingBk);
+
+function searchingBk(event) {
+    if (event.which === 13 || event.keyCode === 13) {
+
+        // makes input into: this+is+input
+        let theSplit = searchBook.value.replace(/ /g, "+");
+        dataBook(theSplit).then(
+            (resolve) => {
+                printBkSearch(resolve);
+            },
+            (reject) => {
+                console.log("didn't load");
+            }
+        );
+    }
+}
+
+let dataBook = (input) => {
+    return new Promise((resolve, reject) => {
+        var bookBase = `http://openlibrary.org/search.json?q=${input}&limit=10`;
+
+        let request = new XMLHttpRequest();
+
+        request.onload = function () {
+            if (request.status === 200) {
+                let data = JSON.parse(request.responseText);
+                resolve(data);
+            }
+        };
+        request.open("GET", bookBase);
+        request.send();
+    });
+};
+
+let printBkSearch = (resolve) => {
+    outputBook.innerHTML = "";
+
+    for (let item in resolve.docs) {
+        let fullItem = resolve.docs[item];
+
+        let itemList = {
+            sub: fullItem.subtitle ? `: ${fullItem.subtitle}` : "",
+            author: fullItem.author_name ? `${fullItem.author_name}` : "Unknown",
+            uStatus: fullItem.author_name ? "" : "uknown",
+            pubDate: fullItem.first_publish_year ? `- first published in ${fullItem.first_publish_year}` : "",
+        };
+
+        outputBook.innerHTML +=
+            `<div class="book-printed">
+        <h1>${fullItem.title}${itemList.sub}</h1>
+        <h2 class=${itemList.uStatus}>by ${itemList.author}</h2>
+        <p>${itemList.pubDate}</p>
+        </div>`;
+    }
+};
+
+// const url = "http://openlibrary.org/search.json?q=harry+potter&limit=10";
+
+// let getBookData = () => {
+//     return $.ajax({
+//         url: url
+//     });
+// };
+
+// getBookData()
+//     .then((response) => {
+//         console.log(response);
+//     });
+
+// console.log("We have LOTR!");
+
+
+
+// function userInputToURL (string) {
 	
-	let bookTitleSearch = $("#book-title").val();
-	console.log("book title", bookTitleSearch);
+// 	let bookTitleSearch = $("#book-title").val();
+// 	console.log("book title", bookTitleSearch);
 
-	let authorSearch = $("#author-name").val();
-	console.log("authorSearch", authorSearch);
+// 	let authorSearch = $("#author-name").val();
+// 	console.log("authorSearch", authorSearch);
 
-	let yearPublishedSearch = $("#publish-year").val();
-	console.log("yearPublishedSearch", yearPublishedSearch);
-}
+// 	let yearPublishedSearch = $("#publish-year").val();
+// 	console.log("yearPublishedSearch", yearPublishedSearch);
+// }
 
-function grabBookData(userBookInput) {
+// function grabBookData(userBookInput) {
    
-	return $.ajax({
-		url: `https://openlibrary.org/search.json?q=${userBookInput}`,
+// 	return $.ajax({
+// 		url: `https://openlibrary.org/search.json?q=${userBookInput}`,
 
-	}).done(() => {
+// 	}).done(() => {
 
-		return ;
-   });
-}
+// 		return ;
+//    });
+// }
 
 
-function userInputToURL(element, apiURL) {
-    let titleQuery = titleField.val();
-    console.log(titleQuery);
+// function userInputToURL(element, apiURL) {
+//     let titleQuery = titleField.val();
+//     console.log(titleQuery);
 
-    apiURL = `http://openlibrary.org/search.json?q=${titleQuery}`;
+//     apiURL = `http://openlibrary.org/search.json?q=${titleQuery}`;
     
-    console.log(apiURL);
-}
+//     console.log(apiURL);
+// }
             
 
 
-titleField.focusout(userInputToURL(apiURL));
-authorField.focusout(userInputToURL(apiURL));
-yearPubField.focusout(userInputToURL(apiURL));
-bookSubmitButton.click(function (event) {
-            console.log("Click me again");
-    });
+// titleField.focusout(userInputToURL(apiURL));
+// authorField.focusout(userInputToURL(apiURL));
+// yearPubField.focusout(userInputToURL(apiURL));
+// bookSubmitButton.click(function (event) {
+//             console.log("Click me again");
+//     });
 
 
 
@@ -126,4 +204,4 @@ bookSubmitButton.click(function (event) {
 
 
 
-module.exports = {testMe, fetchWeather, fetchCity, grabBookData, userInputToURL, bookSubmitButton};
+module.exports = {testMe, fetchWeather, fetchCity, searchingBk };
