@@ -18,3 +18,4 @@ locate.setCity();
 locate.setWeather();
 news.getNews();
 news.listNews();
+news.printNews();

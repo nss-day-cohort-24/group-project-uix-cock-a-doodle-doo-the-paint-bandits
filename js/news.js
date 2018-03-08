@@ -55,6 +55,7 @@ function  printNews() {
      bigNews.append(`<a href="${currentNews.url}">${currentNews.title}</a><br>`);
      if(currentNews.description){
         bigNews.append(`<p>${currentNews.description}</p>`);
+        // console.log("123456789");
    }}});
     }    
 
