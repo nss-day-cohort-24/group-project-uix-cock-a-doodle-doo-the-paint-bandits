@@ -68,6 +68,7 @@ a:hover {
     height: 480px;
     background-color: $green-t;
     border-radius: 11px;
+    color: $white;
 }
 
 .card-title4 {
@@ -85,7 +86,9 @@ a:hover {
 .big-container {
     width:100%;
 }
-
+#displayNews{
+    color: $white;
+}
 #background {
     position: fixed;
     top: 0;

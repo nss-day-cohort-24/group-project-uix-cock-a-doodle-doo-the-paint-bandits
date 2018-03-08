@@ -29,7 +29,7 @@ console.log("yo", newsDiv);
 /////////////// FUNCTION PRINT TO HOME //////////////
 function  listNews() {
 getNews().then((data) => {
-newsDisplay = data.events;
+// newsDisplay = data.events;
 for(let i=0; i < 1; i++) {
  let currentNews = newsArticles[i];
  if(currentNews.urlToImage){
@@ -57,6 +57,16 @@ function  printNews() {
         bigNews.append(`<p>${currentNews.description}</p>`);
    }}});
     }    
+
+    function editNews(newsFormObj, newsId) {
+        return $.ajax({
+          url: `https://music-history-d2484.firebaseio.com/songs/${newsId}.json`,
+          type: 'PUT',
+          data: JSON.stringify(newsFormObj)
+        }).done((data) => {
+          return data;
+        });
+     }
 
       
 module.exports= { getNews, listNews, printNews};

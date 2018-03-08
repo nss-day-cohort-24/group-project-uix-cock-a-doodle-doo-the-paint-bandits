@@ -8,22 +8,15 @@ let connectionTest = () => {
 };
 
 
- let addUserLocation = (location) => {
-    console.log("addUserLocation", location);
-    
-    return $.ajax({
-        url: `${firebase.getFBsettings().databaseURL}/location.json`,
-        type: 'POST',
-        data: JSON.stringify(location),
-        dataType: 'json'
-    }).done((UserLocationID) => {
-        console.log("This is the key", UserLocationID);
-        return UserLocationID;
-    });
-    
-
-};
-
+ let addUserLocation =  (user) => {
+    console.log("url", firebase.getFBsettings().dabaseURL);
+        return $.ajax({
+            url: `${firebase.getFBsettings().databaseURL}/location.json?orderBy="uid"&equalTo="${user}"`
+        }).done((locationData) => {
+            console.log("locationData in promise", locationData);
+            return locationData;
+        });
+    };
 
 
 

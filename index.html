@@ -26,11 +26,19 @@
           <div class="col-md-3, card-title1">
             <a href= "#weatherSection">
               <h2>WEATHER</h2>
+              
             </a>
+            <div id="row-location">
+
+            </div>
+            <div id="col-weather">
+                  
+                </div>
           </div>
           <div class="col-md-3, card-title2">
             <a href= "#newsSection">
               <h2>NEWS</h2>
+              
             </a>  
           <div id="displayNews"></div>
           </div>
@@ -38,6 +46,7 @@
             <a href= "#booksSection">
               <h2>BOOKS</h2>
             </a>
+            <div id="displayBooks"></div>
           </div>
           <div class="col-md-3, card-title4">
             <a href= "#meetUpSection">
@@ -56,7 +65,7 @@
         <ul class="nav navbar-nav"></ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="#"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a>
+              <a href="#"><span class="glyphicon glyphicon-log-in"></span> <button id="goog-login"></button> LOGIN</a>
             </li>
         </ul>
       </div>
@@ -70,6 +79,9 @@
                 <nav id="weatherNav">
                     <h1>WEATHER</h1>
                 </nav>
+                <div id="weatherLoc">
+
+                </div>
                 <p>Filler FillerFillerFillerFillerFiller </p>
             </div>
             <div id="weatherDiv"></div>
@@ -88,13 +100,39 @@
 
 
         <section id="booksSection">
+            <div>
+                <nav id="booksNav">
+                    <h1>BOOKS</h1>
+                </nav>
+                <p>Filler FillerFillerFillerFillerFiller </p>
+            </div>
+            <div id="booksDiv"></div>
+        </section>
+        
+       
+        <section id="booksSection">
                 <div>
-                    <nav id="booksNav">
-                        <h1>BOOKS</h1>
-                    </nav>
-                    <p>Filler FillerFillerFillerFillerFiller </p>
+                    <section id="search--books" class="col section--books">
+                        <form id="book-form">
+                            <fieldset>
+                                <legend>Enter your search values</legend>
+                                Book Title
+                                <br>
+                                <input type="text" id="book-title">
+                                <br> Author
+                                <br>
+                                <input type="text" id="author-name">
+                                <br> Year Published
+                                <br>
+                                <input type="text" id="publish-year">
+                                <br>
+                    
+                                <!-- Jesie added this SIIICK button -->
+                                <button id="form-submit" type="submit">Search</button>
+                    
+                            </fieldset>
+                    </section>
                 </div>
-                <div id="booksDiv"></div>
         </section>
 
 
@@ -108,7 +146,7 @@
 </article>
 
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="dist/app.js"></script>
