@@ -23,50 +23,59 @@ margin:0px;
 padding:0px;
 color: black;
 }
+.row {
+    margin: 0 1em;
+}
 
 #displayMeetups, ul{
-    text-align: center;
+    text-align: left;
     padding: 1em;
-    color: white;
+    color: $white;
 }
 
 ul li {
     list-style: none;
 }
 
+a {
+    color: $white;
+}
+
+a:hover {
+    color: $grey;
+    text-decoration: none;
+}
+
 .card-title1 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: red;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $red-t;
+    border-radius: 11px;
 }
 
 .card-title2 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: grey;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $black-t;
+    border-radius: 11px;
 }
 
 .card-title3 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: blue;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $green-t;
+    border-radius: 11px;
 }
 
 .card-title4 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: rgba(50, 90, 54, 0.7);
-    border: 3px solid black;
+    background-color: $orange-t;
+    border-radius: 11px;
 }
 
 .container {
@@ -97,17 +106,17 @@ ul li {
     margin: 0;
     bottom: 0em;
     margin-top: 0px;
-    padding: 2%;;
+    padding: 1em 2em;
 }
 
 .display-3 {
-    font-size: 100px;
     font-weight: 400;
 }
 
 .shadow {
-     background-color: #d3d3d3;
+     background-color: rgba(0, 0, 0, .7);
      width: 100%;
+     margin-top: 3.5em;
 }
 
 .container-fluid {
@@ -122,15 +131,24 @@ section{
 #newsSection {
     background-color: $black-t;
     color: $white;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 #weatherSection{
     background-color: $red-t;
+    height: 100vh;
+    width: 100%;
 }
 #booksSection {
     background-color: $green-t;
+    height: 100vh;
+    width: 100%;
 }
 #meetUpSection {
     background-color: $orange-t;
+    height: 100vh;
+    width: 100%;
 }
 
 

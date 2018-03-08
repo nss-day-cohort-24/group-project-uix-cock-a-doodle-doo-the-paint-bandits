@@ -2,6 +2,7 @@
 
 var $ = require('jquery');
 
+
 let url = 'https://newsapi.org/v2/top-headlines?' +
           'country=us&' +
           'apiKey=5afaf2800c8b46329fbfd648e0c02b14';

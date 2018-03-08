@@ -12,68 +12,63 @@
 
 <body>
     <div id="background"></div>
-    <!-- <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-                <ul class="active">
-                    <a href="#">Home</a>
-                </ul>
-    
-                <ul>
-                    <a href="#">Weather</a>
-                </ul>
-                <ul>
-                    <a href="#">News</a>
-                </ul>
-                <ul>
-                    <a href="#">Books</a>
-                </ul>
-                <ul>
-                    <a href="#">MeetUps</a>
-                </ul>
-            </ul>
-        </div>
-    </nav> -->
-
-    <div class="shadow">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">BRIEF</a>
-                </div>
-                <ul class="nav navbar-nav">
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
+  
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-3">
-                <center>Hello, Taylor.</center>
+                <center>Let's get going, Taylor!</center>
             </h1>
         </div>
     </div>
 
 
-    <div class="border row">
-        <div class="border col-md-3, card-title1">Weather</div>
-        <div class="border col-md-3, card-title2">News<div id="displayNews"></div></div>
-        <div class="border col-md-3, card-title3">Books</div>
-        <div class="border col-md-3, card-title4">Meetups<div id="displayMeetups"></div>
+    <div class="row">
+          <div class="col-md-3, card-title1">
+            <a href= "#weatherSection">
+              <h2>WEATHER</h2>
+            </a>
+          </div>
+          <div class="col-md-3, card-title2">
+            <a href= "#newsSection">
+              <h2>NEWS</h2>
+            </a>  
+          <div id="displayNews"></div>
+          </div>
+          <div class="col-md-3, card-title3">
+            <a href= "#bookSection">
+              <h2>BOOKS</h2>
+            </a>
+          </div>
+          <div class="col-md-3, card-title4">
+            <a href= "#meetUpSection">
+              <h2>MEETUPS</h2>
+            </a>
+            <div id="displayMeetups"></div>         
+          </div>
     </div>
-    
+
+  <div class="shadow">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">BRIEF</a>
+        </div>
+        <ul class="nav navbar-nav"></ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
     <!-- /////////   MAIN SECTION FOR ALL 4 APIs   ////////////////// -->
 <article> 
         <section id="weatherSection">
             <div>
                 <nav id="weatherNav">
-                    <h1>Weather</h1>
+                    <h1>WEATHER</h1>
                 </nav>
                 <p>Filler FillerFillerFillerFillerFiller </p>
             </div>
@@ -95,7 +90,7 @@
         <section id="booksSection">
                 <div>
                     <nav id="booksNav">
-                        <h1>Books</h1>
+                        <h1>BOOKS</h1>
                     </nav>
                     <p>Filler FillerFillerFillerFillerFiller </p>
                 </div>
@@ -103,17 +98,15 @@
         </section>
 
 
-        <section id="meetUpSection">
-                <div>
-                    <nav id="meetUpNav">
-                        <h1>Meet-Up</h1>
-                    </nav>
-                    <p>Filler FillerFillerFillerFillerFiller </p>
-                </div>
-                <div id="meetUpDiv"></div>
-        </section>
+  <section id="meetUpSection">
+    <nav id="meetUpNav">
+        <h1>MEETUPS</h1>
+    </nav>
+    <div id="meetupSectionDiv" ><!--javascript here--></div>         
+  </section>
 
 </article>
+
 
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
