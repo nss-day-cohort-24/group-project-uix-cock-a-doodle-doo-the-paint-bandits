@@ -22,7 +22,7 @@ var eventDisplay;
 // VARIABLE TO GET DOM ELEMENT //
 let meetupDiv = document.getElementById( 'displayMeetups' );
 
-// FUNCTION THAT PRINTS TO DOM //
+// FUNCTION THAT PRINTS TO MAIN PAGE //
 function showEvents() {
   getMeetup().then((cityData) => {
   eventDisplay = cityData.events;
