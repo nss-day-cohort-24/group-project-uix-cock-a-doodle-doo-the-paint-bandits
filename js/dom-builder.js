@@ -17,7 +17,13 @@ function populateLocation(loc){
 
 function populateWeather(weather){
     console.log("populateWeather() is running, here's the contents of the passed variable", weather.main.temp);
-    colWeather.innerHTML = `${weather.main.temp}`;
+    colWeather.innerHTML = `Temp in Kelvin: ${weather.main.temp}</br>
+    Sunrise at: ${weather.sys.sunrise}</br>
+    Sunset at: ${weather.sys.sunset}</br>
+    Clouds:${weather.clouds.all}</br>
+    
+    `;
+
 
 }
 
