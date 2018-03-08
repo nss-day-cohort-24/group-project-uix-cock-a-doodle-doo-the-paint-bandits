@@ -3,7 +3,7 @@ let $ = require("jquery");
 
 // STUFF FROM BOOKS-SEARCH
 let apiURL;
-let bookSubmitButton = $("#form-submit");
+let bookSubmitButton = document.getElementById("form-submit");
 let titleField = $("#book-title");
 let authorField = $("#author-name");
 let yearPubField = $("#publish-year");
@@ -108,9 +108,9 @@ function userInputToURL(element, apiURL) {
 titleField.focusout(userInputToURL(apiURL));
 authorField.focusout(userInputToURL(apiURL));
 yearPubField.focusout(userInputToURL(apiURL));
-bookSubmitButton.click(function (event) {
-            console.log("Click me again");
-    });
+bookSubmitButton.addEventListener = (click) => {
+            console.log("The submit button has been clicked.");
+    };
 
 
 
