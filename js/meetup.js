@@ -29,13 +29,20 @@ function showEvents() {
   console.log("event data: ", eventDisplay);
   let emptyEvent = "";
   for (let i = 0; i < 1; i++) {
-    emptyEvent += `<ul>
-    <li><h3>What</h3><h4 id = "eventName"><a href = "${eventDisplay[i].link}">${eventDisplay[i].name}</h4></a></li>
-    <li><h3>When</h3>${eventDisplay[i].local_date}</li>
-    <li>${eventDisplay[i].local_time}</li>
-    <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
-    <li>${eventDisplay[i].venue.address_1}</li>
-    <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li></ul>`;
+    emptyEvent += 
+    `<ul>
+      <li>
+        <h3>What</h3>
+        <a href="${eventDisplay[i].link}">${eventDisplay[i].name}</a>
+      </li>
+      <li>
+        <h3>When</h3>${eventDisplay[i].local_date}
+      </li>
+      <li>${eventDisplay[i].local_time}</li>
+      <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
+      <li>${eventDisplay[i].venue.address_1}</li>
+      <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
+    </ul>`;
   }
   meetupDiv.innerHTML = emptyEvent;
   });

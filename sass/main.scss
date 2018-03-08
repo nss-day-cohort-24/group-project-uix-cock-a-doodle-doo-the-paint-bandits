@@ -8,13 +8,13 @@ $grey: #DDCEC4;
 $green: #7EAB93;
 
 // CARD COLORS (TRANSPARENCY)
-$red-t: rgba(198, 61, 15, .7);
-$black-t: rgba(59, 55, 56, .7);
-$white-t: rgba(253, 243, 231, .7);
-$olive-t: rgba(126, 143, 124, .7);
-$orange-t: rgba(235, 113, 24, .7);
-$grey-t: rgba(221, 206, 196, .7);
-$green-t: rgba(126, 171, 147, .7);
+$red-t: rgba(198, 61, 15, .9);
+$black-t: rgba(59, 55, 56, .9);
+$white-t: rgba(253, 243, 231, .9);
+$olive-t: rgba(126, 143, 124, .9);
+$orange-t: rgba(235, 113, 24, .9);
+$grey-t: rgba(221, 206, 196, .9);
+$green-t: rgba(126, 171, 147, .9);
 
 html, body {
 height: 100%;
@@ -34,39 +34,45 @@ ul li {
     list-style: none;
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: $grey;
+    text-decoration: none;
+}
+
 .card-title1 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: red;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $red-t;
+    border-radius: 11px;
 }
 
 .card-title2 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: grey;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $black-t;
+    border-radius: 11px;
 }
 
 .card-title3 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: blue;
-    opacity: 0.7;
-    border: 3px solid black;
+    background-color: $green-t;
+    border-radius: 11px;
 }
 
 .card-title4 {
     text-align: center;
     width: 25%;
     height: 480px;
-    background-color: rgba(50, 90, 54, 0.7);
-    border: 3px solid black;
+    background-color: $orange-t;
+    border-radius: 11px;
 }
 
 .container {
@@ -106,7 +112,7 @@ ul li {
 }
 
 .shadow {
-     background-color: #d3d3d3;
+     background-color: rgba(0, 0, 0, .7);
      width: 100%;
 }
 
