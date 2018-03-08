@@ -5,6 +5,7 @@ let db = require("./fb-db-rb.js");
 let weather = require("./fetch-weather-rb.js");
 let template = require("./dom-builder.js");
 
+
 // This should be replaced to sync up with the DOM -- //
 let localTown = "Nashville"; 
 var location;
@@ -27,7 +28,7 @@ function setCity(){
             location = loc;
             db.connectionTest();
             template.populateLocation(loc);
-            db.addUserLocation(loc);
+            //db.addUserLocation(loc);
 
         });
 }
@@ -38,7 +39,7 @@ function setWeather(){
         (resolve)=>{
             returnedQueryWeather = resolve;
             console.log("Weather: ", returnedQueryWeather);
-
+            template.populateWeather(returnedQueryWeather);
         }
     );
 
