@@ -1,10 +1,6 @@
 "use strict";
 let fetchall = require( "./fetch-all.js"),
     locate = require( "./initialize.js"),
-<<<<<<< HEAD
-    
-=======
->>>>>>> 4f7ed878c204e27cd16fb8aff1f6946182a00f37
     news= require("./news"),
     meetup= require("./meetup"),
     user = require("./users.js"),
