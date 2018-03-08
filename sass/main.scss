@@ -119,3 +119,43 @@ a:hover {
 .container-fluid {
     color: black;
 }
+
+section{
+    text-align: center;
+}
+
+/////// 4 MAIN SECTIONS /////////////////////////// 
+#newsSection {
+    background-color: $black-t;
+    color: $white;
+}
+#weatherSection{
+    background-color: $red-t;
+}
+#booksSection {
+    background-color: $green-t;
+}
+#meetUpSection {
+    background-color: $orange-t;
+}
+
+
+
+///////// 4 NAV BARS ///////////////////
+#newsNav {
+    background: $white;
+    color: $black;
+    text-align: center;
+}
+#weatherNav {
+    background: $red;
+    color: $black;
+}
+#booksNav {
+    background: $green;
+    color: $black;
+}
+#meetUpNav {
+    background: $orange;
+    color: $black;
+}
