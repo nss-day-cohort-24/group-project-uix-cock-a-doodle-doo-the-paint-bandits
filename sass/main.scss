@@ -23,6 +23,11 @@ margin:0px;
 padding:0px;
 color: black;
 }
+
+h1 {
+    color: $white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, .7); 
+}
 .row {
     margin: 0 1em;
 }
@@ -68,6 +73,7 @@ a:hover {
     height: 480px;
     background-color: $green-t;
     border-radius: 11px;
+    color: $white;
 }
 
 .card-title4 {
@@ -85,7 +91,9 @@ a:hover {
 .big-container {
     width:100%;
 }
-
+#displayNews{
+    color: $white;
+}
 #background {
     position: fixed;
     top: 0;
@@ -148,15 +156,23 @@ section{
 #meetUpSection {
     background-color: $orange-t;
     height: 100vh;
-    width: 100%;
 }
 
+#meetupSectionDiv {
+    width: 45%;
+    overflow: scroll;
+    height: 80vh;
+    float: right;
+    margin: 3em 2em;
+    background-color: $orange-t;
+    border-radius: 11px;
+}
 
 
 ///////// 4 NAV BARS ///////////////////
 #newsNav {
-    background: $white;
-    color: $black;
+    background: $black;
+    color: $white;
     text-align: center;
 }
 #weatherNav {
@@ -170,4 +186,41 @@ section{
 #meetUpNav {
     background: $orange;
     color: $black;
+}
+
+// BOOKS
+
+.book-printed {
+    border: 1px solid black;
+}
+
+#outputBook {
+    float: right;
+    width: 45%;
+    height: 80vh;
+    margin: 3em 2em;
+    border-radius: 11px;
+    background-color: $green-t;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
 }
