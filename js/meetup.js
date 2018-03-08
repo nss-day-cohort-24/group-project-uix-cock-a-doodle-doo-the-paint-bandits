@@ -19,14 +19,15 @@ function getMeetup() {
 // GLOBAL VARIABLE THAT WILL HOLD THE DATA //   
 var eventDisplay;
 
-// VARIABLE TO GET DOM ELEMENTS //
-let meetupMain = document.getElementById( 'displayMeetups' );
-let meetupDiv = document.getElementById( 'meetupSectionDiv' );
+// VARIABLE TO GET DOM ELEMENT //
+let meetupHome = document.getElementById( 'displayMeetups' );
+let meetupDiv = $( '#meetupSectionDiv' );
 
-// FUNCTION THAT PRINTS TO MAIN DIV //
+// FUNCTION THAT PRINTS TO DOM //
 function showEvent() {
   getMeetup().then((cityData) => {
   eventDisplay = cityData.events;
+  // console.log("event data: ", eventDisplay);
   let emptyEvent = "";
   for (let i = 0; i < 1; i++) {
     emptyEvent += 
@@ -44,35 +45,38 @@ function showEvent() {
       <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
     </ul>`;
   }
-  meetupMain.innerHTML = emptyEvent;
+  meetupHome.innerHTML = emptyEvent;
   });
 }
 
-// CALL FUNCTION TO PRINT TO DOM //
+// CALL FUNCTION TO PRINT TO DOM
 showEvent();
 
 // FUNCTION THAT PRINTS TO MEETUP DIV //
 function showEvents() {
   getMeetup().then((cityData) => {
-  eventDisplay = cityData.events;
-  let emptyEvent = "";
-  for (let i = 0; i < 1; i++) {
-    emptyEvent += 
+  for (let i = 0; i < 10; i++) {
+    eventDisplay = cityData.events[i];
+    console.log("Event Display", eventDisplay);
+    meetupDiv.append(
     `<ul>
       <li>
-        <h3>What</h3>
-        <a href="${eventDisplay[i].link}">${eventDisplay[i].name}</a>
+        <h2><a href="${eventDisplay.link}">${eventDisplay.name}</a><h2>
       </li>
       <li>
-        <h3>When</h3>${eventDisplay[i].local_date}
+        <h4>Where: ${eventDisplay.group.localized_location}</h4>
       </li>
-      <li>${eventDisplay[i].local_time}</li>
-      <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
-      <li>${eventDisplay[i].venue.address_1}</li>
-      <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
-    </ul>`;
+      <li>
+        <h4>ON: ${eventDisplay.local_date} ${eventDisplay.local_time}</h4>
+      </li>
+    </ul>`);
+    
+
+    //   <li><h3>Where</h3>${meetupEvent.venue.name}</li>
+    //   <li>${meetupEvent.venue.address_1}</li>
+    //   <li>${meetupEvent.venue.city}, ${meetupEvent.venue.state} ${meetupEvent.venue.zip}</li>
+    // </ul>`;
   }
-  meetupDiv.innerHTML = emptyEvent;
   });
 }
 
