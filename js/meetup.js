@@ -21,7 +21,7 @@ var eventDisplay;
 
 // VARIABLE TO GET DOM ELEMENT //
 let meetupHome = document.getElementById( 'displayMeetups' );
-let meetupDiv = $('meetupSectionDiv');
+let meetupDiv = $( '#meetupSectionDiv' );
 
 // FUNCTION THAT PRINTS TO DOM //
 function showEvent() {
@@ -57,17 +57,22 @@ function showEvents() {
   getMeetup().then((cityData) => {
   for (let i = 0; i < 10; i++) {
     eventDisplay = cityData.events[i];
-    console.log("event display: ", eventDisplay);
+    console.log("event display: ", eventDisplay.name);
     meetupDiv.append(
     `<ul>
       <li>
         <h3>What</h3>
         <a href="${eventDisplay.link}">${eventDisplay.name}</a>
       </li>
+      
       <li>
         <h3>When</h3>${eventDisplay.local_date} ${eventDisplay.local_time}
       </li>
+      <li>
+        <h3>Where</h3>${eventDisplay.group.localized_location}
+      </li>
     </ul>`);
+    
 
     //   <li><h3>Where</h3>${meetupEvent.venue.name}</li>
     //   <li>${meetupEvent.venue.address_1}</li>
