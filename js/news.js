@@ -46,7 +46,7 @@ for(let i=0; i < 1; i++) {
 ////////// FUNCTION PRINT TO MAIN NEWS SECTION //////
 function  printNews() {
     getNews().then((data) => {
-    // newsDisplay = data.events;
+    newsDisplay = data.events;
     for(let i=0; i < 5; i++) {
      let currentNews = newsArticles[i];
      if(currentNews.urlToImage){
@@ -55,9 +55,18 @@ function  printNews() {
      bigNews.append(`<a href="${currentNews.url}">${currentNews.title}</a><br>`);
      if(currentNews.description){
         bigNews.append(`<p>${currentNews.description}</p>`);
-        // console.log("123456789");
    }}});
     }    
+
+    function editNews(newsFormObj, newsId) {
+        return $.ajax({
+          url: `https://music-history-d2484.firebaseio.com/songs/${newsId}.json`,
+          type: 'PUT',
+          data: JSON.stringify(newsFormObj)
+        }).done((data) => {
+          return data;
+        });
+     }
 
       
 module.exports= { getNews, listNews, printNews};
