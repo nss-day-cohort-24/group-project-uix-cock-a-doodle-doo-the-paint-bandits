@@ -1,13 +1,15 @@
 "use strict";
-let fetchweather = require( "./fetch-weather-rb");
-let newweather = require("./weather.js");
-let locate = require( "./location-set-rb");
-let mine= require("./books");
-let news= require("./news");
-let meetup= require("./meetup");
+let fetchall = require( "./fetch-all.js"),
+    locate = require( "./initialize.js"),
+    
+    mine= require("./books"),
+    news= require("./news"),
+    meetup= require("./meetup");
+
+    
 // CONSOLE TESTS
 locate.testMe();
-fetchweather.testMe();
+
 
 
 
@@ -16,6 +18,3 @@ locate.setCity();
 locate.setWeather();
 news.getNews();
 news.listNews();
-news.printNews();
-newweather.getWeather();
- 

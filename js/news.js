@@ -29,7 +29,7 @@ console.log("yo", newsDiv);
 /////////////// FUNCTION PRINT TO HOME //////////////
 function  listNews() {
 getNews().then((data) => {
-newsDisplay = data.events;
+// newsDisplay = data.events;
 for(let i=0; i < 1; i++) {
  let currentNews = newsArticles[i];
  if(currentNews.urlToImage){
@@ -46,7 +46,7 @@ for(let i=0; i < 1; i++) {
 ////////// FUNCTION PRINT TO MAIN NEWS SECTION //////
 function  printNews() {
     getNews().then((data) => {
-    newsDisplay = data.events;
+    // newsDisplay = data.events;
     for(let i=0; i < 5; i++) {
      let currentNews = newsArticles[i];
      if(currentNews.urlToImage){
