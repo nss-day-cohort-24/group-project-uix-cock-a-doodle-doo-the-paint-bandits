@@ -8,13 +8,13 @@ $grey: #DDCEC4;
 $green: #7EAB93;
 
 // CARD COLORS (TRANSPARENCY)
-$red-t: rgba(198, 61, 15, .9);
-$black-t: rgba(59, 55, 56, .9);
-$white-t: rgba(253, 243, 231, .9);
-$olive-t: rgba(126, 143, 124, .9);
-$orange-t: rgba(235, 113, 24, .9);
-$grey-t: rgba(221, 206, 196, .9);
-$green-t: rgba(126, 171, 147, .9);
+$red-t: rgba(198, 61, 15, .7);
+$black-t: rgba(59, 55, 56, .7);
+$white-t: rgba(253, 243, 231, .7);
+$olive-t: rgba(126, 143, 124, .7);
+$orange-t: rgba(235, 113, 24, .7);
+$grey-t: rgba(221, 206, 196, .7);
+$green-t: rgba(126, 171, 147, .7);
 
 html, body {
 height: 100%;
@@ -23,11 +23,14 @@ margin:0px;
 padding:0px;
 color: black;
 }
+.row {
+    margin: 0 1em;
+}
 
 #displayMeetups, ul{
-    text-align: center;
+    text-align: left;
     padding: 1em;
-    color: white;
+    color: $white;
 }
 
 ul li {
@@ -35,7 +38,7 @@ ul li {
 }
 
 a {
-    color: white;
+    color: $white;
 }
 
 a:hover {
@@ -103,17 +106,17 @@ a:hover {
     margin: 0;
     bottom: 0em;
     margin-top: 0px;
-    padding: 2%;;
+    padding: 1em 2em;
 }
 
 .display-3 {
-    font-size: 100px;
     font-weight: 400;
 }
 
 .shadow {
      background-color: rgba(0, 0, 0, .7);
      width: 100%;
+     margin-top: 3.5em;
 }
 
 .container-fluid {
@@ -128,15 +131,24 @@ section{
 #newsSection {
     background-color: $black-t;
     color: $white;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 #weatherSection{
     background-color: $red-t;
+    height: 100vh;
+    width: 100%;
 }
 #booksSection {
     background-color: $green-t;
+    height: 100vh;
+    width: 100%;
 }
 #meetUpSection {
     background-color: $orange-t;
+    height: 100vh;
+    width: 100%;
 }
 
 
