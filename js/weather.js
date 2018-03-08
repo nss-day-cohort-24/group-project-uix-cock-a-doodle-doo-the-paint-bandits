@@ -15,9 +15,7 @@ var zipCode = "37221";
 getWeather("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=59532cc55fafea3eb5fddb6e600206b8")
    .then((data)=> {
 
-    let tempConverter = function(temp) {
-        return Math.round((1.8* (temp - 273) + 32));
-    };
+    
     console.log("heres the temp",data);
    });
 
