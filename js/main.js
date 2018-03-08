@@ -1,5 +1,5 @@
 "use strict";
-let fetchweather = require( "./fetch-weather-rb"),
+let fetchall = require( "./fetch-all.js"),
     locate = require( "./location-set-rb"),
     
     mine= require("./books"),
@@ -9,7 +9,7 @@ let fetchweather = require( "./fetch-weather-rb"),
     
 // CONSOLE TESTS
 locate.testMe();
-fetchweather.testMe();
+
 
 
 

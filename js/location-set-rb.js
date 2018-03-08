@@ -1,8 +1,6 @@
 "use strict";
-
-let city = require("./fetch-city-data-rb");
+let fobjs = require("./fetch-all");
 let db = require("./fb-db-rb.js");
-let weather = require("./fetch-weather-rb.js");
 let template = require("./dom-builder.js");
 
 
@@ -18,7 +16,7 @@ function testMe(){
 function setCity(){
 
 
-    city.fetchCity(localTown).then(
+    fobjs.fetchCity(localTown).then(
         (resolve) => {
             returnedQuery = resolve.results[0];
             console.log(returnedQuery);
@@ -35,7 +33,7 @@ function setCity(){
 
 function setWeather(){
 
-    weather.fetchWeather().then(
+    fobjs.fetchWeather().then(
         (resolve)=>{
             returnedQueryWeather = resolve;
             console.log("Weather: ", returnedQueryWeather);
