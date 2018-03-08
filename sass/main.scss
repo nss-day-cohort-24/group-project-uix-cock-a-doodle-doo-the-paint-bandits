@@ -23,6 +23,11 @@ margin:0px;
 padding:0px;
 color: black;
 }
+
+h1 {
+    color: $white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, .7); 
+}
 .row {
     margin: 0 1em;
 }
@@ -154,18 +159,20 @@ section{
 }
 
 #meetupSectionDiv {
-    width: 50%;
+    width: 45%;
     overflow: scroll;
     height: 80vh;
     float: right;
-    vertical-align: center;
+    margin: 3em 2em;
+    background-color: $orange-t;
+    border-radius: 11px;
 }
 
 
 ///////// 4 NAV BARS ///////////////////
 #newsNav {
-    background: $white;
-    color: $black;
+    background: $black;
+    color: $white;
     text-align: center;
 }
 #weatherNav {

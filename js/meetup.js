@@ -57,13 +57,14 @@ function showEvents() {
   getMeetup().then((cityData) => {
   for (let i = 0; i < 10; i++) {
     eventDisplay = cityData.events[i];
+    console.log("Event Display", eventDisplay);
     meetupDiv.append(
     `<ul>
       <li>
         <h2><a href="${eventDisplay.link}">${eventDisplay.name}</a><h2>
       </li>
       <li>
-        <h4>WHERE: ${eventDisplay.group.localized_location}</h4>
+        <h4>Where: ${eventDisplay.group.localized_location}</h4>
       </li>
       <li>
         <h4>ON: ${eventDisplay.local_date} ${eventDisplay.local_time}</h4>
