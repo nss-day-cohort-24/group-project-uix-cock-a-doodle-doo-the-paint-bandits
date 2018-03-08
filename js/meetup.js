@@ -19,14 +19,42 @@ function getMeetup() {
 // GLOBAL VARIABLE THAT WILL HOLD THE DATA //   
 var eventDisplay;
 
-// VARIABLE TO GET DOM ELEMENT //
-let meetupDiv = document.getElementById( 'displayMeetups' );
+// VARIABLE TO GET DOM ELEMENTS //
+let meetupMain = document.getElementById( 'displayMeetups' );
+let meetupDiv = document.getElementById( 'meetupSectionDiv' );
 
-// FUNCTION THAT PRINTS TO MAIN PAGE //
+// FUNCTION THAT PRINTS TO MAIN DIV //
+function showEvent() {
+  getMeetup().then((cityData) => {
+  eventDisplay = cityData.events;
+  let emptyEvent = "";
+  for (let i = 0; i < 1; i++) {
+    emptyEvent += 
+    `<ul>
+      <li>
+        <h3>What</h3>
+        <a href="${eventDisplay[i].link}">${eventDisplay[i].name}</a>
+      </li>
+      <li>
+        <h3>When</h3>${eventDisplay[i].local_date}
+      </li>
+      <li>${eventDisplay[i].local_time}</li>
+      <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
+      <li>${eventDisplay[i].venue.address_1}</li>
+      <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
+    </ul>`;
+  }
+  meetupMain.innerHTML = emptyEvent;
+  });
+}
+
+// CALL FUNCTION TO PRINT TO DOM //
+showEvent();
+
+// FUNCTION THAT PRINTS TO MEETUP DIV //
 function showEvents() {
   getMeetup().then((cityData) => {
   eventDisplay = cityData.events;
-  console.log("event data: ", eventDisplay);
   let emptyEvent = "";
   for (let i = 0; i < 1; i++) {
     emptyEvent += 
@@ -48,8 +76,8 @@ function showEvents() {
   });
 }
 
-// CALL FUNCTION TO PRINT TO DOM
+// CALL FUNCTION TO PRINT TO DOM //
 showEvents();
 
 // EXPORTS
-module.exports = {getMeetup, showEvents};
+module.exports = {getMeetup, showEvent, showEvents};
