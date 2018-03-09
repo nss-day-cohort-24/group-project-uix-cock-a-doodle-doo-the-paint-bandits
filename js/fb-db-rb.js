@@ -33,7 +33,8 @@ let setfbUser = (userInfo) => {
 
 
 };
-
+// This function checks whether or not Firebase has a user by a certain ID. If it does, it returns the object. If not? It returns an empty object.
+// Either way, you'll get an object back.
 let getFBUser = (userInfo) => {
     console.log("Checking for firebase User,", userInfo);
     return $.ajax({
@@ -42,29 +43,9 @@ let getFBUser = (userInfo) => {
     }).done((data)=>{
         return data;
     }
-
     );
-
-
-
 };
 
-
-// var settings = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": "https://paint-bandits-productivity-app.firebaseio.com/users.json",
-//     "method": "POST",
-//     "headers": {
-//       "Cache-Control": "no-cache",
-//       "Postman-Token": "e9359acc-7d68-ff65-f2f5-a56114c959b9"
-//     },
-//     "data": "{\"uid\": \"ALUpjPcspBVFh3YP6kVVYqnyPNC3\"}"
-//   }
-  
-//   $.ajax(settings).done(function (response) {
-//     console.log(response);
-//   });
 
 
 
