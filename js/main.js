@@ -50,7 +50,7 @@ $("#goog-login").click(function() {
 
 function runTheAPP(data){
 
-    console.log("Let's get the party started");
+    console.log("Let's get the party started", data);
 }
 
 
@@ -59,16 +59,16 @@ console.log("In checkUser(), do you mean to check " + data + "? Because that's w
 db.getFBUser(data).then((newdata) =>{
     console.log("Data checkUser:", newdata);
     let ID = Object.values(newdata);
-    if (ID.length !== 0 && ID.length === 1) {
+    console.log(`${data} === ${ID.length}`);
+    
+    if (ID.length >= 0) {
+        console.log("Yes, a user is here already. Lets use him.", ID);
+        runTheAPP(ID);
+    }
+    if (ID.length === 0){ 
         console.log("You have no user by that name. Call setUser(). Let's add this guy:" , ID);
         let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
         setUser(UID); // HARD PASS.
-    }
-    else{
-        
-        console.log("Yes, a user is here already. Lets use him.", ID);
-        runTheAPP(ID);
-        
     }
 });
 
