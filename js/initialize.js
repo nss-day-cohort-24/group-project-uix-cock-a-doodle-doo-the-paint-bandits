@@ -6,15 +6,15 @@ let template = require("./dom-builder.js");
 
 // This should be replaced to sync up with the DOM -- //
 let localTown = "Nashville"; 
-var location;
 let returnedQuery, returnedQueryWeather;
 function testMe(){
-
+    
     console.log("Fired module of location-set-rb.js");
 }
 
 function setCity(){
-
+    
+    var lat, lon;
 
     fobjs.fetchCity(localTown).then(
         (resolve) => {
@@ -23,12 +23,13 @@ function setCity(){
             return returnedQuery; 
         }).then(
         (loc)=>{
-            location = loc;
-            db.connectionTest();
-            template.populateLocation(loc);
-            //db.addUserLocation(loc);
+            lat = loc.lat;
+            lon = loc.lon;
+            return {lat, lon};
 
         });
+
+        
 }
 
 function setWeather(){

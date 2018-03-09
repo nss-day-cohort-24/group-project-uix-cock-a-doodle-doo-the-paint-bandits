@@ -4,7 +4,8 @@
 
 let meet = require("./meeting-api-key-rb.js");
 var $ = require('jquery');
-let user = require("./fb-config");
+let firebase = require("./fb-config");
+
 
 // EMPTY VARIABLE TO HOLD DATA //
 let meetups;
@@ -89,12 +90,12 @@ function getUserMeetup(users) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/meetups.json?orderBy="uid"&equalTo="${users}"`
     }).done((meetupData) =>{
-      return meetupData
+      return meetupData;
     });
 }
 
 function addMeetup(meetupObject) {
-  return $ajax({
+  return $.ajax({
     url: `$(firebase.getFBsettings().databaseURL/meetups.jason`,
     type: 'POST',
     data: JSON.stringify(meetupObject),

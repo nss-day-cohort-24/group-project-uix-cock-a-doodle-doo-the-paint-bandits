@@ -45,7 +45,13 @@ function fetchCity(city){
         cityLoader.addEventListener("load", function() {
 
             var data = JSON.parse(this.responseText);
-            resolve(data);
+            let coords= {
+                lat,
+                lon,
+            };
+            coords.lat = data.lat;
+            coords.lon = data.lon;
+            resolve(coords);
 
         });
         
