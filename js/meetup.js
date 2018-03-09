@@ -82,7 +82,7 @@ function showEvents() {
     // </ul>`;
   }
   });
-
+}
 // REQUIRES //}
 
 // CALL FUNCTION TO PRINT TO DOM //

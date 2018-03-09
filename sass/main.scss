@@ -129,6 +129,12 @@ a:hover {
      background-color: rgba(0, 0, 0, .7);
      width: 100%;
      margin-top: .2em;
+     position: fixed;
+     bottom: 0;
+}
+
+    .footer-block {
+      margin: 20px 0;
 }
 
 .container-fluid {
@@ -146,6 +152,12 @@ section, {
 }
 
 /////// 4 MAIN SECTIONS /////////////////////////// 
+#main-page {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
 #newsSection {
     background-color: $black-t;
     color: $white;
@@ -235,11 +247,11 @@ section, {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: red; 
+    background: $grey; 
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: $black;
 }
