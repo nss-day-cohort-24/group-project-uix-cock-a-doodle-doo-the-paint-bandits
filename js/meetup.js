@@ -43,7 +43,8 @@ function showEvent() {
       <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
       <li>${eventDisplay[i].venue.address_1}</li>
       <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
-    </ul>`;
+    </ul>
+    <button id="saveMeetup">SAVE</button>`;
   }
   meetupHome.innerHTML = emptyEvent;
   });
@@ -69,7 +70,8 @@ function showEvents() {
       <li>
         <h4>ON: ${eventDisplay.local_date} ${eventDisplay.local_time}</h4>
       </li>
-    </ul>`);
+    </ul>
+    <button id="saveMeetup">SAVE MEETUP</button>`);
     
 
     //   <li><h3>Where</h3>${meetupEvent.venue.name}</li>
