@@ -92,8 +92,9 @@ function checkUserExists(userData, UID){
         console.log("uidArray is empty, NEW USER:", UID);
         setUser(UID);
     }
-
-    else{
+    if (uidArray.includes(UID)){
+        console.log("The User is in this collection, so run the app.");
+        setUser(UID);
         runTheAPP();
     }
     // uidArray.forEach((item) => {
