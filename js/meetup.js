@@ -4,6 +4,7 @@
 
 let meet = require("./meeting-api-key-rb.js");
 var $ = require('jquery');
+let user = require("./fb-config");
 
 // EMPTY VARIABLE TO HOLD DATA //
 let meetups;
@@ -82,9 +83,27 @@ function showEvents() {
     // </ul>`;
   }
   });
+}
 
-// REQUIRES //}
 
+function getUserMeetup(users) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/meetups.json?orderBy="uid"&equalTo="${users}"`
+    }).done((meetupData) =>{
+      return meetupData
+    });
+}
+
+function addMeetup(meetupObject) {
+  return $ajax({
+    url: `$(firebase.getFBsettings().databaseURL/meetups.jason`,
+    type: 'POST',
+    data: JSON.stringify(meetupObject),
+    dataType: 'json'
+  }).done((meetupID) =>{
+    return meetupID;
+  });
+}
 // CALL FUNCTION TO PRINT TO DOM //
 showEvents();
 
