@@ -22,7 +22,7 @@ function getNews() {
 var newsDisplay;
 
 let newsDiv = $('#displayNews');
-let bigNews = $('#newsDiv');
+let bigNews = $('#newsSectionDiv');
 
 console.log("yo", newsDiv);
 
@@ -55,7 +55,9 @@ function  printNews() {
      bigNews.append(`<a href="${currentNews.url}">${currentNews.title}</a><br>`);
      if(currentNews.description){
         bigNews.append(`<p>${currentNews.description}</p>`);
-   }}});
+       }
+       bigNews.append(`<button id="newsButton">SAVE</button><br>`);
+}});
     }    
 
     function editNews(newsFormObj, newsId) {

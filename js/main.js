@@ -88,9 +88,9 @@ function setUser(data){
 <<<<<<< HEAD
 =======
 // RUNNING CODE
-//news.getNews();
-// news.listNews();
-// news.printNews();
+news.getNews();
+news.listNews();
+news.printNews();
 
 //SMOOTH SCROLL//
 // Select all links with hashes
