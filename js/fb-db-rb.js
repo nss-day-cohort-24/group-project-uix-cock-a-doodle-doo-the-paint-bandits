@@ -41,7 +41,9 @@ let getFBUser = (userInfo) => {
         url: `${firebase.getFBsettings().databaseURL}/users.json?orderBy="uid"&equalTo="${userInfo}"`,
         method: "GET"
     }).done((data)=>{
+        console.log(data);
         return data;
+        
     }
     );
 };

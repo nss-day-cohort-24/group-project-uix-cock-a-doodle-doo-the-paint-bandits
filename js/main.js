@@ -58,69 +58,20 @@ function checkUser(data){
 console.log("In checkUser(), do you mean to check " + data + "? Because that's what's being passed in the Firebase to be checked.");
 db.getFBUser(data).then((newdata) =>{
     console.log("Data checkUser:", newdata);
-    console.log("checkUser() keys", newdata.uid);
-    
-    checkUserExists(newdata, data);
-    
-    // if (data.uid) {
-    //     console.log("If: Yes you have returned object here.", data.uid);
-    //     runTheAPP(data);
-    // }
-    // else{
-    //     console.log("Else: You have no user by that name. Let's add this guy:" , data.uid );
-    //     let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
-    //     setUser(UID); // HARD PASS.
+    let ID = Object.values(newdata);
+    if (ID) {
+        console.log("Yes, a user is here already. Lets use him.", ID);
+        runTheAPP(ID);
+    }
+    else{
+        console.log("You have no user by that name. Call setUser(). Let's add this guy:" , ID);
+        let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
+        setUser(UID); // HARD PASS.
         
-    // }
+    }
 });
 
 }
-
-function checkUserExists(userData, UID){
-    console.log("this is the userData",userData);
-    let userArray = (Object.values(userData));
-    console.log("user Array",userArray);
-    let uidArray = [];
-    for (let i=0;i<userArray.length;i++){
-        console.log("here");
-        let currentPush = userArray[i].uid;
-        console.log("current push",currentPush);
-        uidArray.push(currentPush);
-    }
-    if (uidArray.length === 0) {
-
-        console.log("uidArray is empty, NEW USER:", UID);
-        setUser(UID);
-    }
-    if (uidArray.includes(UID)){
-        console.log("The User is in this collection, so run the app.");
-        setUser(UID);
-        runTheAPP();
-    }
-    // uidArray.forEach((item) => {
-    //     if (userData.uid === item) {
-    //     console.log("If: Yes you have returned object here.", item);
-    //     runTheAPP(item);
-    // }
-    //     else{
-    //         setUser(UID);
-    //     }
-        
-    // });
-
-    
-    // let currentUid = user.getUser();
-    // console.log("uid",currentUid);
-    // if(uidArray.includes(currentUid)){
-    //     console.log("already exists");
-    //     news.retrieveNews(currentUid);
-    // }else{
-    //     console.log("this is a new user");
-    //     let userObj = buildUserObj();
-    //     addUser(userObj);
-    // }
- }
-
 
 function setUser(data){ 
     let userInfo = {};
