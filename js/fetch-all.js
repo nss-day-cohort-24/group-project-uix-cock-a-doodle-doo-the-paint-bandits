@@ -52,7 +52,7 @@ function fetchCity(city){
     });
 }
 
-function fetchWeather(){
+function fetchWeather(){ 
 
     return new Promise((resolve, reject ) =>{
 
@@ -76,7 +76,7 @@ let searchBook = document.getElementById("searchBook"),
     outputBook = document.getElementById("outputBook");
 searchBook.addEventListener("keydown", searchingBk);
 
-function searchingBk(event) {
+function searchingBk(event) { 
     if (event.which === 13 || event.keyCode === 13) {
 
         // makes input into: this+is+input
@@ -92,7 +92,7 @@ function searchingBk(event) {
     }
 }
 
-let dataBook = (input) => {
+let dataBook = (input) => { 
     return new Promise((resolve, reject) => {
         var bookBase = `http://openlibrary.org/search.json?q=${input}&limit=10`;
 
@@ -130,3 +130,5 @@ let printBkSearch = (resolve) => {
         </div>`;
     }
 };
+
+module.exports = {printBkSearch, dataBook, searchingBk, fetchWeather, fetchCity};

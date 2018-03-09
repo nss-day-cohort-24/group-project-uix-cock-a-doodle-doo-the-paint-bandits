@@ -13,10 +13,10 @@
 <body>
     <div id="background"></div>
   
-    <div class="jumbotron jumbotron-fluid">
+    <div id="top" class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-3">
-                <center>Let's get going, Taylor!</center>
+                <center id="greeting">Let's get going, Taylor!</center>
             </h1>
         </div>
     </div>
@@ -56,6 +56,8 @@
           </div>
     </div>
 
+    <h3 class="arrow"><a href= "#weatherSection">&#709;</a></h3>
+
   <div class="shadow">
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -75,8 +77,10 @@
     <!-- /////////   MAIN SECTION FOR ALL 4 APIs   ////////////////// -->
 <article> 
         <section id="weatherSection">
+                
             <div>
                 <nav id="weatherNav">
+                    <h3 class="arrow"><a href= "#top">&#708;</a></h3>
                     <h1>WEATHER</h1>
                 </nav>
                 <div id="weatherLoc">
@@ -85,23 +89,29 @@
                 <p>Filler FillerFillerFillerFillerFiller </p>
             </div>
             <div id="weatherDiv"></div>
+            <h3 class="arrow"><a href= "#newsSection">&#709;</a></h3>
         </section>
 
 
         <section id="newsSection">
+                
             <div>
                 <nav id="newsNav">
+                    <h3 class="arrow"><a href= "#weatherSection">&#708;</a></h3>
                     <h1>NEWS</h1>
                 </nav>
                 <p>Filler FillerFillerFillerFillerFiller </p>
             </div>
             <div id="newsDiv"></div>
+            <h3 class="arrow"><a href= "#booksSection">&#709;</a></h3>
         </section>
 
 
         <section id="booksSection">
+                
             <div>
                 <nav id="booksNav">
+                    <h3 class="arrow"><a href= "#newsSection">&#708;</a></h3>
                     <h1>BOOKS</h1>
                 </nav>
             </div>
@@ -111,13 +121,17 @@
                 <div id="news"></div>
 
             </div>
+            <h3 class="arrow"><a href= "#meetUpSection">&#709;</a></h3>
         </section>
 
 
   <section id="meetUpSection">
+        
     <nav id="meetUpNav">
+        <h3 class="arrow"><a href= "#booksSection">&#708;</a></h3>
         <h1>MEETUPS</h1>
     </nav>
+    <div id="savedMeetupDiv"><!--javascript here--></div>
     <div id="meetupSectionDiv" ><!--javascript here--></div>         
   </section>
 
