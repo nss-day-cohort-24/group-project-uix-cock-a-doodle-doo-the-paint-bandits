@@ -59,7 +59,7 @@ console.log("In checkUser(), do you mean to check " + data + "? Because that's w
 db.getFBUser(data).then((newdata) =>{
     console.log("Data checkUser:", newdata);
     let ID = Object.values(newdata);
-    if (ID) {
+    if (ID.length !== 0) {
         console.log("Yes, a user is here already. Lets use him.", ID);
         runTheAPP(ID);
     }
