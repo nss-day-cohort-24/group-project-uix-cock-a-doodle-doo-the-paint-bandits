@@ -85,7 +85,6 @@ function showEvents() {
   });
 }
 
-
 function getUserMeetup(users) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/meetups.json?orderBy="uid"&equalTo="${users}"`
