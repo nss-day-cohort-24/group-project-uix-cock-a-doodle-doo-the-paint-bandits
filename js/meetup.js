@@ -1,6 +1,8 @@
 "use strict";
+
 // REQUIRES //
-// let city = require("./fetch-city-data-rb");
+
+let meet = require("./meeting-api-key-rb.js");
 var $ = require('jquery');
 
 // EMPTY VARIABLE TO HOLD DATA //
@@ -9,7 +11,7 @@ let meetups;
 // FUNCTION THAT CALLS THE API //
 function getMeetup() {
     return $.ajax({
-      url: `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&page=20&key=1e4561622f48361f4d63564f224e4a27`
+      url: `https://${meet.keyMeet.authDomain}/find${meet.keyMeet.meetupSpecifier}?&sign=true&photo-host=public&page=10&key=${meet.keyMeet.apiKey}`
     }).done((data) => {
         meetups = data.meetups;
       return meetups;
@@ -43,7 +45,8 @@ function showEvent() {
       <li><h3>Where</h3>${eventDisplay[i].venue.name}</li>
       <li>${eventDisplay[i].venue.address_1}</li>
       <li>${eventDisplay[i].venue.city}, ${eventDisplay[i].venue.state} ${eventDisplay[i].venue.zip}</li>
-    </ul>`;
+    </ul>
+    <button id=[i]>SAVE</button>`;
   }
   meetupHome.innerHTML = emptyEvent;
   });
@@ -69,7 +72,8 @@ function showEvents() {
       <li>
         <h4>ON: ${eventDisplay.local_date} ${eventDisplay.local_time}</h4>
       </li>
-    </ul>`);
+    </ul>
+    <button id="[i]">SAVE MEETUP</button>`);
     
 
     //   <li><h3>Where</h3>${meetupEvent.venue.name}</li>
@@ -78,7 +82,8 @@ function showEvents() {
     // </ul>`;
   }
   });
-}
+
+// REQUIRES //}
 
 // CALL FUNCTION TO PRINT TO DOM //
 showEvents();

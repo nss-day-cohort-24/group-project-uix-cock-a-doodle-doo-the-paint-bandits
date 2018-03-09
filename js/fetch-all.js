@@ -58,7 +58,10 @@ function fetchCity(city){
     });
 }
 
-function fetchWeather(){ 
+
+
+function fetchWeather(){
+
 
     return new Promise((resolve, reject ) =>{
 
@@ -137,4 +140,5 @@ let printBkSearch = (resolve) => {
     }
 };
 
-module.exports = {printBkSearch, dataBook, searchingBk, fetchWeather, fetchCity};
+module.exports= {fetchCity, fetchWeather, searchingBk, dataBook, printBkSearch};
+
