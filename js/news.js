@@ -1,6 +1,14 @@
 "use strict";
 
 var $ = require('jquery');
+var user = require('./users');
+var firebase = require('./fb-config');
+var buttonNum = 0;
+let nameButton;
+let newsImgAdd;
+let newsTitleAdd;
+let newsUrlAdd;
+let articles;
 
 
 let url = 'https://newsapi.org/v2/top-headlines?' +
@@ -56,9 +64,40 @@ function  printNews() {
      if(currentNews.description){
         bigNews.append(`<p>${currentNews.description}</p>`);
        }
-       bigNews.append(`<button id="newsButton">SAVE</button><br>`);
+       bigNews.append(`<button id="button${i}">SAVE</button><br>`);
 }});
     }    
+    
+    function buildNewNews() {
+        let newsObj ={
+            imageUrl: getNewsImageUrl(articles),
+            title:getNewsTitle(articles),
+            url: getNewsUrl(articles),
+            uid: user.getUser()
+        };
+        return newsObj;
+    }
+$(document).ready(function(){
+    bigNews.click(function newsButton(event){
+        let buttonName = event.target.id;
+        buttonNum = buttonName.slice(6, 7);
+        buttonNum = parseInt(buttonNum);
+        console.log(buttonNum);
+        let newsObj = buildNewNews();
+        addSavedNews(newsObj);
+    });
+});
+function addSavedNews(newsObj) {
+    console.log("add news", newsObj);
+    return $.ajax({
+        url:`${firebase.getFBsettings().databaseurl}/news.json`,
+        type: 'POST',
+        data: JSON.stringify(newsObj),
+        dataType: 'json'
+    }).done((newsID) =>{
+        return newsID;
+    });
+}
 
     function editNews(newsFormObj, newsId) {
         return $.ajax({
@@ -69,6 +108,73 @@ function  printNews() {
           return data;
         });
      }
+
+
+
+///////////////// DECLARE FUNCTIONS ///////////
+function getNewsImageUrl(articles){
+    console.log("what button num?:", buttonNum);
+  let currentNewsImg = articles[buttonNum];
+  let newsImgAdd = currentNewsImg.urlToImage;
+  console.log(newsImgAdd);
+  return newsImgAdd;
+  }
+
+function getNewsTitle(articles){
+  console.log("what button num?:", buttonNum);
+let currentNewsTitle = articles[buttonNum];
+let newsTitleAdd = currentNewsTitle.title;
+console.log(newsTitleAdd);
+return newsTitleAdd;
+}
+
+function getNewsUrl(articles){
+    console.log("button num:", buttonNum);
+let currentNewsUrl = articles[buttonNum];
+let newsUrlAdd = currentNewsUrl.url;
+console.log(newsUrlAdd);
+return newsUrlAdd;
+}
+
+function retrieveNews(uid){
+    console.log("url", firebase.getFBsettings().databaseURL);
+    return $.ajax({
+        url:`${firebase.getFBsettings().databaseURL}/news.json`
+    }).done((newsData) => {
+        findSavedNews(newsData);
+        return newsData;
+    });
+}
+
+function findSavedNews(newsData){
+    console.log("newsData",newsData);
+    let newsArray = (Object.values(newsData));
+    console.log("newsArray",newsArray);
+    let newsPrintArray = [];
+    for (let i=0;i<newsArray.length;i++){
+        let currentUid = user.getUser();
+        let currentCompare = newsArray[i].uid;
+        if (currentUid == currentCompare){
+            newsPrintArray.push(newsArray[i]);
+            console.log("To print:",newsPrintArray);
+        }
+    
+    }
+    populateSavedNews(newsPrintArray);
+    
+    }
+    
+    function populateSavedNews(newsPrintArray){
+        $('#savedNewsDiv').html(`<h2>Your Saved News</h2>`);
+        for (let j=0;j<newsPrintArray.length;j++){
+            let savedNews = newsPrintArray[j];
+            console.log(savedNews);
+            if (savedNews.imageUrl){
+            $('#savedNewsDiv').append(`<br><a href="${savedNews.url}"><img src="${savedNews.imageUrl}" style="width:100px;height:100px;"></a><br>`);
+            }
+            $('#savedNewsDiv').append(`<a href="${savedNews.url}"><h3>${savedNews.title}<h3></a><br>`);
+        }}
+
 
       
 module.exports= { getNews, listNews, printNews};
