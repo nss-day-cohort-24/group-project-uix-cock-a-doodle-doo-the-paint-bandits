@@ -24,6 +24,10 @@ padding:0px;
 color: black;
 }
 
+#greeting {
+    color: $black;
+}
+
 h1 {
     color: $white;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, .7); 
@@ -124,15 +128,21 @@ a:hover {
 .shadow {
      background-color: rgba(0, 0, 0, .7);
      width: 100%;
-     margin-top: 3.5em;
+     margin-top: .2em;
 }
 
 .container-fluid {
     color: black;
 }
 
-section{
+section, {
     text-align: center;
+}
+
+.arrow {
+    text-align:center;
+    font-size: 50px;
+    margin: 0 auto;
 }
 
 /////// 4 MAIN SECTIONS /////////////////////////// 
@@ -163,7 +173,7 @@ section{
     overflow: scroll;
     height: 80vh;
     float: right;
-    margin: 3em 2em;
+    margin: 1em;
     background-color: $orange-t;
     border-radius: 11px;
 }
@@ -197,7 +207,7 @@ section{
 #outputBook {
     float: right;
     width: 45%;
-    height: 80vh;
+    height: 70%;
     margin: 3em 2em;
     border-radius: 11px;
     background-color: $green-t;
