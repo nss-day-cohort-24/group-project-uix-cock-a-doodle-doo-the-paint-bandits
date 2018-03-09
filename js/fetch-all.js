@@ -83,16 +83,16 @@ function fetchWeather(){
 
 let searchBook = document.getElementById("searchBook"),
     outputBook = document.getElementById("outputBook");
-searchBook.addEventListener("keydown", searchingBk);
+searchBook.addEventListener("keydown", searchingBook);
 
-function searchingBk(event) { 
+function searchingBook(event) { 
     if (event.which === 13 || event.keyCode === 13) {
 
         // makes input into: this+is+input
         let theSplit = searchBook.value.replace(/ /g, "+");
         dataBook(theSplit).then(
             (resolve) => {
-                printBkSearch(resolve);
+                printBookSearch(resolve);
             },
             (reject) => {
                 console.log("didn't load");
@@ -118,7 +118,7 @@ let dataBook = (input) => {
     });
 };
 
-let printBkSearch = (resolve) => {
+let printBookSearch = (resolve) => {
     outputBook.innerHTML = "";
 
     for (let item in resolve.docs) {
@@ -135,10 +135,10 @@ let printBkSearch = (resolve) => {
             `<div class="book-printed">
         <h1>${fullItem.title}${itemList.sub}</h1>
         <h2 class=${itemList.uStatus}>by ${itemList.author}</h2>
-        <p>${itemList.pubDate}</p>
+        <p>${itemList.pubDate}<button id="[i]" type="button" class="btn btn-primary">Save Book</button>
         </div>`;
     }
 };
 
-module.exports= {fetchCity, fetchWeather, searchingBk, dataBook, printBkSearch};
+module.exports= {fetchCity, fetchWeather, searchingBook, dataBook, printBookSearch};
 
