@@ -39,18 +39,19 @@ function fetchCity(city){
 
         let cityLoader = new XMLHttpRequest();
 
-        cityLoader.open("GET", `https://api.meetup.com${keyCity.keyMeet.specifier}?key=${keyCity.keyMeet.apiKey}&sign=true&country=UnitedStates&state=Tennessee.json`, true);
+        cityLoader.open("GET", `https://api.meetup.com${keyCity.keyMeet.specifier}?&query=${city}&key=${keyCity.keyMeet.apiKey}&sign=true`, true);
         cityLoader.send();
 
         cityLoader.addEventListener("load", function() {
 
             var data = JSON.parse(this.responseText);
+            console.log("Data returned:", data.results);
             let coords= {
                 lat,
                 lon,
             };
-            coords.lat = data.lat;
-            coords.lon = data.lon;
+            coords.lat = data.results[0].lat;
+            coords.lon = data.results[0].lon;
             resolve(coords);
 
         });

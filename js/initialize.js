@@ -12,14 +12,14 @@ function testMe(){
     console.log("Fired module of location-set-rb.js");
 }
 
-function setCity(){
+function setCity(cityString){
     
     var lat, lon;
 
-    fobjs.fetchCity(localTown).then(
+    fobjs.fetchCity(cityString).then(
         (resolve) => {
-            returnedQuery = resolve.results[0];
-            console.log(returnedQuery);
+            returnedQuery = resolve.results;
+            console.log("Return from fetchCity:",returnedQuery);
             return returnedQuery; 
         }).then(
         (loc)=>{

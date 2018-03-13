@@ -1,22 +1,21 @@
 "use strict";
 let fetchall = require( "./fetch-all.js"),
-    locate = require( "./initialize.js"),
+locate = require( "./initialize.js"),
 
-    news= require("./news"),
-    meetup= require("./meetup"),
-    user = require("./users.js"),
-    db =  require("./fb-db-rb"), //change later the name of this function please.
-    $ = require("jquery");
-    
+news= require("./news"),
+meetup= require("./meetup"),
+user = require("./users.js"),
+db =  require("./fb-db-rb"), //change later the name of this function please.
+$ = require("jquery");
+
+var inputBar = document.getElementById("shadow-city");
+
+
 function loadCityToDOM(){
     console.log("Starting to load city and weather");
     let currentUser = user.getUser();
     console.log("Current User in City");
     let userProfile = buildUserProfile();
-    //db.addUserLocation(userProfile);
-    //locate.setCity();
-    //locate.setWeather();
-
 
 }
 
@@ -48,32 +47,67 @@ $("#goog-login").click(function() {
     });
   });
 
-function runTheAPP(data){
+  
+  
+  
+  function runTheAPP(data){
+      // We need to have it so that when location is found, it's inputed into the database.
+      
+      let dataUID = data[0].uid;
+      
+      inputBar.addEventListener("keyup", function(e){
+          
+          if (e.keyCode === 13 && e.target.value != "")  {
+              let userInput = e.target.value.toLowerCase();
+              fetchall.fetchCity(userInput).then(
+                  
+                (location) =>{
+                    console.log("Location:", location);
+                    console.log("UID:", dataUID);
+                    let pass = {dataUID, location};
+                    db.addUserLocation(pass);
+              });
+            
+            
+        }
+      
+      });
+      
+    //   locate.setWeather();
+    //   news.getNews();
+    //   news.listNews();
+    //   news.printNews();
+
 
     console.log("Let's get the party started", data);
 }
 
 
+
 function checkUser(data){
-console.log("In checkUser(), do you mean to check " + data + "? Because that's what's being passed in the Firebase to be checked.");
-db.getFBUser(data).then((newdata) =>{
-    console.log("Data checkUser:", newdata);
-    let ID = Object.values(newdata);
-    console.log(`${data} === ${ID.length}`);
-    
-    if (ID.length >= 0) {
-        console.log("Yes, a user is here already. Lets use him.", ID);
-        runTheAPP(ID);
-    }
-    if (ID.length === 0){ 
-        console.log("You have no user by that name. Call setUser(). Let's add this guy:" , ID);
-        let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
-        setUser(UID); // HARD PASS.
-    }
-});
 
+    console.log("In checkUser(), do you mean to check " + data + "? Because that's what's being passed in the Firebase to be checked.");
+    db.getFBUser(data).then((newdata) =>{
+        console.log("Data checkUser:", newdata);
+        let ID = Object.values(newdata);
+        /*Here, ID should either be a 1 or a 0 
+        because we are calling the index value of the key.*/
+        
+        console.log(`${data} === ${ID.length}`);
+        
+        if (ID.length > 0) {
+            console.log("Yes, a user is here already. Let's use him.", ID);
+            runTheAPP(ID);
+            user.setUser(ID);
+        }
 
-
+        if (ID.length === 0){ 
+            console.log("You have no user by that name. Call setUser(). Let's add this guy:" , data);
+            let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
+            user.setUser(ID);
+            setUser(UID); // HARD PASS.
+        }
+    });
 }
 
 function setUser(data){ 
@@ -82,14 +116,10 @@ function setUser(data){
     console.log("userInfo", userInfo);
     db.setfbUser(userInfo).then((item)=>{
         console.log("We got a user set under this collection:", item);
-        runTheAPP(item); 
+        runTheAPP(item);
     });
     
   }
-
-  news.getNews();
-  news.listNews();
-  news.printNews();
   
   //SMOOTH SCROLL//
   // Select all links with hashes

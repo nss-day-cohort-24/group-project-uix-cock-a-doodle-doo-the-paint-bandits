@@ -8,11 +8,18 @@ let connectionTest = () => {
 };
 
 
- let addUserLocation =  (user) => {
-    console.log("url", firebase.getFBsettings().dabaseURL);
+ let addUserLocation =  (userData) => { 
+    // NOTE: I am passing in an object containing multiple objects here. It's a bit messy. userData contains two objects within, and the JSON.stringify passes it as a POST, which is an "initial posting". Firebase returns a string which is in SQL terms the "primary key", so when I want to PATCH or PUT data to this, I have to use that reference to access this data again.
+
+
+
+    console.log("url", firebase.getFBsettings().databaseURL);
+    console.log("User data to be POST", userData.dataPass);
+    console.log("User location to be POST:",userData.userInput);
         return $.ajax({
-            url: `${firebase.getFBsettings().databaseURL}/location.json?orderBy="uid"&equalTo="${user}"`,
-            post: "PUT",
+            url: `${firebase.getFBsettings().databaseURL}/location.json`,
+            method: "POST",
+            data: JSON.stringify(userData)
         }).done((locationData) => {
             console.log("locationData in promise", locationData);
             return locationData;
