@@ -32,7 +32,7 @@ function buildUserProfile(){
     });
     
 }
-// User login section. Should ideally be in its own module
+// User login button.
 $("#goog-login").click(function() {
     console.log("clicked auth");
     user.logInGoogle()
@@ -45,16 +45,21 @@ $("#goog-login").click(function() {
       //$("#logout").removeClass("is-hidden");
       
     });
-  });
+});
 
+//User edit location button.
   
   
   
-  function runTheAPP(data){
+function runTheApp(data){
       // We need to have it so that when location is found, it's inputed into the database.
       
       let dataUID = data[0].uid;
+      let key;
       
+      // All the Event Listeners for the App should occur in this function.
+
+
       inputBar.addEventListener("keyup", function(e){
           
           if (e.keyCode === 13 && e.target.value != "")  {
@@ -69,7 +74,14 @@ $("#goog-login").click(function() {
                     console.log("UID:", dataUID);
                     let pass = {dataUID, location};
 
-                    db.addUserLocation(pass); // Publish to database.
+                    db.addUserLocation(pass).then((primaryKey) => {
+                        // In this .then, we can assign the primaryKey to a local variable which we update when we mean to update the location data set previously.
+
+
+                        key = primaryKey;
+                        console.log("Key to access & edit location data with:", key);
+
+                    }); // Publish to database.
 
               });
             
@@ -92,25 +104,33 @@ $("#goog-login").click(function() {
 function checkUser(data){
 
     console.log("In checkUser(), do you mean to check " + data + "? Because that's what's being passed in the Firebase to be checked.");
+
+    // Here we are setting the google identified user to the firebase database in the User collection.
     db.getFBUser(data).then((newdata) =>{
         console.log("Data checkUser:", newdata);
         let ID = Object.values(newdata);
-        /*Here, ID should either be a 1 or a 0 
-        because we are calling the index value of the key.*/
+
+        /*Firebase will not tell you explicitly that the User exists already or not. You have to interpret from the details what is what. getFBUser will always return an object (primary key), but whether or not the object contains any values is what matters. So you must conduct a test. If the object holds NO items, then the User is new, and you need to set the user. If the object is more than 0, (preferably not greater than 1 though), the User has logged in before. So, based on the premise that ID should either be a 1 or a 0, I act accordingly because we are calling the index value of the key.*/
         
         console.log(`${data} === ${ID.length}`);
         
         if (ID.length > 0) {
             console.log("User history found. Using User:", ID[0].uid);
-            runTheAPP(ID);
+            runTheApp(ID);
             user.setUser(ID);
         }
 
         if (ID.length === 0){ 
             console.log("New User:" , data);
-            let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
-            user.setUser(ID);
-            setUser(UID);
+            
+            let UID = user.getUser(); 
+            // Let's get the user from Google. Set her credentials in this object.
+            
+            user.setUser(ID); 
+            // Set the User For Google
+            
+            setUser(UID); 
+            //Set the User for Firebase & the web app.
             
         }
     });
@@ -118,11 +138,12 @@ function checkUser(data){
 
 function setUser(data){ 
     let userInfo = {};
-    userInfo.uid = data; // Set the credentials as a property of a new object. Firebase requires an object to be sent.
+    userInfo.uid = data; 
+    // Set the credentials as a property of a new object. Firebase requires an object to be sent.
     console.log("userInfo", userInfo);
-    db.setfbUser(userInfo).then((item)=>{
-        console.log("New User has been set with primary key:", item);
-        runTheAPP(item);
+    db.setfbUser(userInfo).then((primarykey)=>{
+        console.log("New User has been set with primary key:", primarykey);
+        runTheApp(primarykey);
     });
     
   }
