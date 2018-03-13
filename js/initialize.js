@@ -12,25 +12,7 @@ function testMe(){
     console.log("Fired module of location-set-rb.js");
 }
 
-function setCity(cityString){
-    
-    var lat, lon;
 
-    fobjs.fetchCity(cityString).then(
-        (resolve) => {
-            returnedQuery = resolve.results;
-            console.log("Return from fetchCity:",returnedQuery);
-            return returnedQuery; 
-        }).then(
-        (loc)=>{
-            lat = loc.lat;
-            lon = loc.lon;
-            return {lat, lon};
-
-        });
-
-        
-}
 
 function setWeather(){
 
@@ -45,4 +27,4 @@ function setWeather(){
 
 }
 
-module.exports = { testMe, setCity, setWeather };
+module.exports = { testMe, setWeather };

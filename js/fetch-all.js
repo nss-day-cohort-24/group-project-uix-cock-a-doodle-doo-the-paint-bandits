@@ -9,8 +9,7 @@ let authorField = $("#author-name");
 let yearPubField = $("#publish-year");
 let bookForm = $("book-form");
 
-// FETCH OBJECTS FOR BOOKS
-// bookSubmitButton.click(userInputToURL(event));
+
 
 // FETCH OBJECTS FOR CITY
 let keyCity = require ("./meeting-api-key-rb.js");

@@ -43,7 +43,7 @@ $("#goog-login").click(function() {
       checkUser(result.user.uid);
       $("#goog-login").addClass("is-hidden");
       //$("#logout").removeClass("is-hidden");
-      loadCityToDOM();
+      
     });
   });
 
@@ -59,13 +59,18 @@ $("#goog-login").click(function() {
           
           if (e.keyCode === 13 && e.target.value != "")  {
               let userInput = e.target.value.toLowerCase();
+              // On enter press in inputBar, fetchCity using the input, then use the returned location to populate in the firebase database, containing UID information.
+              
+              
               fetchall.fetchCity(userInput).then(
                   
                 (location) =>{
                     console.log("Location:", location);
                     console.log("UID:", dataUID);
                     let pass = {dataUID, location};
-                    db.addUserLocation(pass);
+
+                    db.addUserLocation(pass); // Publish to database.
+
               });
             
             
@@ -96,16 +101,17 @@ function checkUser(data){
         console.log(`${data} === ${ID.length}`);
         
         if (ID.length > 0) {
-            console.log("Yes, a user is here already. Let's use him.", ID);
+            console.log("User history found. Using User:", ID[0].uid);
             runTheAPP(ID);
             user.setUser(ID);
         }
 
         if (ID.length === 0){ 
-            console.log("You have no user by that name. Call setUser(). Let's add this guy:" , data);
+            console.log("New User:" , data);
             let UID = user.getUser(); // Let's get the user from Google. Set her credentials in this object.
             user.setUser(ID);
-            setUser(UID); // HARD PASS.
+            setUser(UID);
+            
         }
     });
 }
@@ -115,7 +121,7 @@ function setUser(data){
     userInfo.uid = data; // Set the credentials as a property of a new object. Firebase requires an object to be sent.
     console.log("userInfo", userInfo);
     db.setfbUser(userInfo).then((item)=>{
-        console.log("We got a user set under this collection:", item);
+        console.log("New User has been set with primary key:", item);
         runTheAPP(item);
     });
     

@@ -14,14 +14,13 @@ let connectionTest = () => {
 
 
     console.log("url", firebase.getFBsettings().databaseURL);
-    console.log("User data to be POST", userData.dataPass);
-    console.log("User location to be POST:",userData.userInput);
+
         return $.ajax({
             url: `${firebase.getFBsettings().databaseURL}/location.json`,
             method: "POST",
             data: JSON.stringify(userData)
         }).done((locationData) => {
-            console.log("locationData in promise", locationData);
+            console.log("Returned locationData in promise for addUserLocation():", locationData);
             return locationData;
         });
     };
