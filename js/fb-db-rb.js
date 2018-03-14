@@ -8,13 +8,19 @@ let connectionTest = () => {
 };
 
 
- let addUserLocation =  (user) => {
-    console.log("url", firebase.getFBsettings().dabaseURL);
+ let addUserLocation =  (userData) => { 
+    // NOTE: I am passing in an object containing multiple objects here. It's a bit messy. userData contains two objects within, and the JSON.stringify passes it as a POST, which is an "initial posting". Firebase returns a string which is in SQL terms the "primary key", so when I want to PATCH or PUT data to this, I have to use that reference to access this data again.
+
+
+
+    console.log("url", firebase.getFBsettings().databaseURL);
+
         return $.ajax({
-            url: `${firebase.getFBsettings().databaseURL}/location.json?orderBy="uid"&equalTo="${user}"`,
-            post: "PUT",
+            url: `${firebase.getFBsettings().databaseURL}/users/${userData.key}.json`,
+            method: "PUT",
+            data: JSON.stringify(userData)
         }).done((locationData) => {
-            console.log("locationData in promise", locationData);
+            console.log("Returned locationData in promise for addUserLocation():", locationData);
             return locationData;
         });
     };
@@ -33,8 +39,10 @@ let setfbUser = (userInfo) => {
 
 
 };
+
 // This function checks whether or not Firebase has a user by a certain ID. If it does, it returns the object. If not? It returns an empty object.
 // Either way, you'll get an object back.
+
 let getFBUser = (userInfo) => {
     console.log("Checking for firebase User,", userInfo);
     return $.ajax({
