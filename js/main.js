@@ -1,37 +1,17 @@
 "use strict";
 let fetchall = require( "./fetch-all.js"),
-locate = require( "./initialize.js"),
+    news= require("./news"),
+    meetup= require("./meetup"),
+    user = require("./users.js"),
+    db =  require("./fb-db-rb"), //change later the name of this function please.
+    $ = require("jquery");
 
-news= require("./news"),
-meetup= require("./meetup"),
-user = require("./users.js"),
-db =  require("./fb-db-rb"), //change later the name of this function please.
-$ = require("jquery");
-
+// Objects with events to respond to
+   
 var inputBar = document.getElementById("shadow-city");
 
 
-function loadCityToDOM(){
-    console.log("Starting to load city and weather");
-    let currentUser = user.getUser();
-    console.log("Current User in City");
-    let userProfile = buildUserProfile();
 
-}
-
-
-function buildUserProfile(){
-    fetchall.fetchCity().then((tempObj)=>{
-        
-        let userSetting = {
-            uid: user.getUser(),
-            lat: tempObj.lat,
-            lon: tempObj.lon
-        };
-            return userSetting;
-    });
-    
-}
 // User login button.
 $("#goog-login").click(function() {
     console.log("clicked auth");
@@ -51,12 +31,15 @@ $("#goog-login").click(function() {
   
   
   
-function runTheApp(data){
+function runTheApp(allData, data){
       // We need to have it so that when location is found, it's inputed into the database.
       
       let dataUID = data[0].uid;
-      let key;
-      
+      console.log("Data from Firebase", data, allData);
+      let key = Object.keys(allData);
+      console.log("Num of keys in allDakey", key);
+      key = key[0];
+      console.log("KEY: ", key);
       // All the Event Listeners for the App should occur in this function.
 
 
@@ -72,9 +55,10 @@ function runTheApp(data){
                 (location) =>{
                     console.log("Location:", location);
                     console.log("UID:", dataUID);
-                    let pass = {dataUID, location};
+                    let pass = {dataUID, location, key};
 
                     db.addUserLocation(pass).then((primaryKey) => {
+                        
                         // In this .then, we can assign the primaryKey to a local variable which we update when we mean to update the location data set previously.
 
 
@@ -116,7 +100,7 @@ function checkUser(data){
         
         if (ID.length > 0) {
             console.log("User history found. Using User:", ID[0].uid);
-            runTheApp(ID);
+            runTheApp(newdata, ID);
             user.setUser(ID);
         }
 
@@ -129,14 +113,14 @@ function checkUser(data){
             user.setUser(ID); 
             // Set the User For Google
             
-            setUser(UID); 
+            setUser( newdata,UID); 
             //Set the User for Firebase & the web app.
             
         }
     });
 }
 
-function setUser(data){ 
+function setUser(keyobject, data){ 
     let userInfo = {};
     userInfo.uid = data; 
     // Set the credentials as a property of a new object. Firebase requires an object to be sent.

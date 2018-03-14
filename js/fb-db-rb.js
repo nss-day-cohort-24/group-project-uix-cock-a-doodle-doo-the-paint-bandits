@@ -16,8 +16,8 @@ let connectionTest = () => {
     console.log("url", firebase.getFBsettings().databaseURL);
 
         return $.ajax({
-            url: `${firebase.getFBsettings().databaseURL}/location.json`,
-            method: "POST",
+            url: `${firebase.getFBsettings().databaseURL}/users/${userData.key}.json`,
+            method: "PUT",
             data: JSON.stringify(userData)
         }).done((locationData) => {
             console.log("Returned locationData in promise for addUserLocation():", locationData);
@@ -39,8 +39,10 @@ let setfbUser = (userInfo) => {
 
 
 };
+
 // This function checks whether or not Firebase has a user by a certain ID. If it does, it returns the object. If not? It returns an empty object.
 // Either way, you'll get an object back.
+
 let getFBUser = (userInfo) => {
     console.log("Checking for firebase User,", userInfo);
     return $.ajax({
