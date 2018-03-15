@@ -10,11 +10,13 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^15.2.0",
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.2",
     "grunt-browserify": "^5.2.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^20.1.0",
+    "install": "^0.10.4",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "matchdep": "^2.0.0"

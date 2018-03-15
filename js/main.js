@@ -46,7 +46,7 @@ function runTheApp(allData, data){
       inputBar.addEventListener("keyup", function(e){
           
           if (e.keyCode === 13 && e.target.value != "")  {
-              let userInput = e.target.value.toLowerCase();
+              let userInput = e.target.value;
               // On enter press in inputBar, fetchCity using the input, then use the returned location to populate in the firebase database, containing UID information.
               
               

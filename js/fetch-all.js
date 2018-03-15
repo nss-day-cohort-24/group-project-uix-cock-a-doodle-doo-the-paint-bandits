@@ -32,13 +32,13 @@ function testMe(){
 
 
 
-function fetchCity(city){
+function fetchCity(zipCode){
 
     return new Promise((resolve, reject) => {
 
         let cityLoader = new XMLHttpRequest();
 
-        cityLoader.open("GET", `https://api.meetup.com${keyCity.keyMeet.specifier}?&query=${city}&key=${keyCity.keyMeet.apiKey}&sign=true`, true);
+        cityLoader.open("GET", `https://api.meetup.com${keyCity.keyMeet.specifier}?&query=${zipCode}&key=${keyCity.keyMeet.apiKey}&sign=true`, true);
         cityLoader.send();
 
         cityLoader.addEventListener("load", function() {

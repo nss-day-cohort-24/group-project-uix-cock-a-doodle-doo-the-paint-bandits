@@ -16,6 +16,7 @@ let connectionTest = () => {
     console.log("url", firebase.getFBsettings().databaseURL);
 
         return $.ajax({
+            // To add to the USER folder, for the particular user, one has to use the key, which is where the UID is contained.
             url: `${firebase.getFBsettings().databaseURL}/users/${userData.key}.json`,
             method: "PUT",
             data: JSON.stringify(userData)

@@ -55,7 +55,7 @@ function showEvent() {
 }
 
 // CALL FUNCTION TO PRINT TO DOM
-showEvent();
+//showEvent();
 
 // FUNCTION THAT PRINTS TO MEETUP DIV //
 function showEvents() {
@@ -105,7 +105,7 @@ function addMeetup(meetupObject) {
   });
 }
 // CALL FUNCTION TO PRINT TO DOM //
-showEvents();
+//showEvents();
 
 // EXPORTS
 module.exports = {getMeetup, showEvent, showEvents};
